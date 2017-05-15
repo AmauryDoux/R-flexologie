@@ -1,3 +1,3 @@
-## Réflexologie
+# Réflexologie
 
-# Julien, Amaury, Maximiliano, Marco 
+## Julien, Amaury, Maximiliano, Marco 
