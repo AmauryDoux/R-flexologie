@@ -1,0 +1,26 @@
+{
+  "name": "reflexologie",
+  "version": "1.0.0",
+  "description": "projet reflexologie",
+  "main": "public/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garciamarco33/R-flexologie.git"
+  },
+  "author": "Julien, Max, Amaury, Thibault, Marco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garciamarco33/R-flexologie/issues"
+  },
+  "homepage": "https://github.com/garciamarco33/R-flexologie#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.0-rc.1",
+    "bulma": "^0.4.1",
+    "express": "^4.15.3"
+  }
+}
