@@ -1,3 +1,3 @@
 # Réflexologie
 
-## Julien, Amaury, Maximiliano, Thibault, Marco 
+## Julien, Amaury, Massimiliano, Thibault, Marco 
