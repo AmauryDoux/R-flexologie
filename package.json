@@ -1,0 +1,28 @@
+{
+  "name": "R-flexologie",
+  "version": "1.0.0",
+  "description": "## Julien, Amaury, Maximiliano, Thibault, Marco",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garciamarco33/R-flexologie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garciamarco33/R-flexologie/issues"
+  },
+  "homepage": "https://github.com/garciamarco33/R-flexologie#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.2.1"
+  }
+}
