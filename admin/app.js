@@ -1,13 +1,13 @@
 'use strict';
 
-var app = angular.module("reflexologie", ["ui.router", "express","bulma"]);
+var app = angular.module("reflexologie", ["ui.router", "ngAnimate"]);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     var states = [
         {
-            name: "admin",
-            url: "/admin",
-            component: "admin"
+            name: "home",
+            url: "/home",
+            component: "home"
         }
     ];
     $urlRouterProvider.otherwise("/home"); // Page par défaut
