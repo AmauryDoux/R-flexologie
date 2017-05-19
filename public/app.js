@@ -1,8 +1,8 @@
 'use strict';
 
-var app = angular.module("reflexologie", ["ui.router"]);
+var app = angular.module("reflexologie", ["ui.router"])
 
-app.config(function($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
     var states = [
         {
             name: "home",
@@ -11,7 +11,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
     ];
     $urlRouterProvider.otherwise(""); // Page par défaut
-    states.forEach(function(state) {
+    states.forEach(function (state) {
         $stateProvider.state(state);
     });
 });
