@@ -6,11 +6,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
     var states = [
         {
             name: "home",
-            url: "/home",
+            url: "",
             component: "home"
         }
     ];
-    $urlRouterProvider.otherwise("/home"); // Page par défaut
+    $urlRouterProvider.otherwise(""); // Page par défaut
     states.forEach(function(state) {
         $stateProvider.state(state);
     });
