@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("reflexologie", ["ui.router", "express","bulma"]);
+var app = angular.module("reflexologie", ["ui.router"]);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     var states = [
