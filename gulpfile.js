@@ -37,11 +37,14 @@
 */
 
 // grab our gulp packages
-var gulp  = require('gulp'),
-    gutil = require('gulp-util'), // Utility functions for gulp plugins.
-    jshint = require('gulp-jshint'), // JSHint (see http://jshint.com/) plugin for gulp.
-    sass  = require('gulp-sass'), // Sass (see http://sass-lang.com/) plugin for gulp.
-    sourcemaps = require('gulp-sourcemaps'); // Map proc'd/min'd/mod'd files to their original sources.
+const gulp  = require('gulp'),
+      gutil = require('gulp-util'), // Utility functions for gulp plugins.
+      jshint = require('gulp-jshint'), // JSHint (see http://jshint.com/) plugin for gulp.
+      sass  = require('gulp-sass'), // Sass (see http://sass-lang.com/) plugin for gulp.
+      cleanCSS = require('gulp-clean-css'), // Gulp plugin to minify CSS, using clean-css.
+      concat = require('gulp-concat'), // Concatenate source files (possibly followed by ugly/mini -fy).
+      sourcemaps = require('gulp-sourcemaps'), // Map proc'd/min'd/mod'd files to their original sources.
+      browserSync = require('browser-sync').create(); // Browsersync cuts out repetitive manual tasks. 
 
 // define the default task and add the watch task to it
 gulp.task('default', ['watch']);
@@ -61,6 +64,8 @@ gulp.task('build-css', function() {
   return gulp.src('source/scss/**/*.scss')
   	.pipe(sourcemaps.init())  // Process the original sources
     	.pipe(sass())
+    	.pipe(concat('styles.css'))
+    	.pipe(gutil.env.type === 'production' ? cleanCSS() : gutil.noop())
     .pipe(sourcemaps.write()) // Add the map to modified source.
     .pipe(gulp.dest('public/assets/stylesheets'));
 });
@@ -70,8 +75,8 @@ gulp.task('build-js', function() {
   return gulp.src('source/javascript/**/*.js')
     .pipe(sourcemaps.init())
       .pipe(concat('bundle.js'))
-      //only uglify if gulp is ran with '--type production'
-      .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop()) 
+      // IF gulp is ran with '--type production' THEN uglify, ELSE do "no operation" (noop() utility).
+      .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/assets/javascript'));
 });
