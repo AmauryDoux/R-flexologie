@@ -67,7 +67,10 @@ gulp.task('build-css', function() {
     	.pipe(concat('styles.css'))
     	.pipe(gutil.env.type === 'production' ? cleanCSS() : gutil.noop())
     .pipe(sourcemaps.write()) // Add the map to modified source.
-    .pipe(gulp.dest('public/assets/stylesheets'));
+    .pipe(gulp.dest('public/assets/stylesheets'))
+    .pipe(browserSync.reload({
+    	stream: true
+    }));
 });
 
 // Javascript concat and minify
@@ -78,7 +81,10 @@ gulp.task('build-js', function() {
       // IF gulp is ran with '--type production' THEN uglify, ELSE do "no operation" (noop() utility).
       .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/assets/javascript'));
+    .pipe(gulp.dest('public/assets/javascript'))
+    .pipe(browserSync.reload({
+    	stream: true
+    }));
 });
 
 // configure which files to watch and what tasks to use on file changes

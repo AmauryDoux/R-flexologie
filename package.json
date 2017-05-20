@@ -28,5 +28,9 @@
     "gulp-util": "^3.0.8",
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.2.1"
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4"
   }
 }
