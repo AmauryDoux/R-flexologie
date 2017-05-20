@@ -38,11 +38,10 @@
 
 // grab our gulp packages
 var gulp  = require('gulp'),
-    gutil = require('gulp-util'),
-    jshint = require('gulp-jshint'),
-    sass  = require('gulp-sass'),
-    // sourcemaps -> to map processed/minified/modified files to their original sources.
-    sourcemaps = require('gulp-sourcemaps');
+    gutil = require('gulp-util'), // Utility functions for gulp plugins.
+    jshint = require('gulp-jshint'), // JSHint (see http://jshint.com/) plugin for gulp.
+    sass  = require('gulp-sass'), // Sass (see http://sass-lang.com/) plugin for gulp.
+    sourcemaps = require('gulp-sourcemaps'); // Map proc'd/min'd/mod'd files to their original sources.
 
 // define the default task and add the watch task to it
 gulp.task('default', ['watch']);
