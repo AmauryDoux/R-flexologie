@@ -21,14 +21,13 @@
 		gulp.src and gulp.dest, used to simply copy files, look like:
 		
 		gulp.task('copyHtml', function() {
-  			// copy any html files in source/ to public/
-  			gulp.src('source/*.html').pipe(gulp.dest('public'));
+  			// copy any html files in src/ to public/
+  			gulp.src('src/*.html').pipe(gulp.dest('public'));
 		});
 
 	4) gulp.watch, like gulp.task, has two main forms. Both of which return an
 		EventEmitter that emits change events. The first of which takes a glob, an
 		optional options object, and an array of tasks as it's parameters.
-		
 */
 
 /*
@@ -43,16 +42,18 @@ const gulp  = require('gulp'),
       sass  = require('gulp-sass'), // Sass (see http://sass-lang.com/) plugin for gulp.
       cleanCSS = require('gulp-clean-css'), // Gulp plugin to minify CSS, using clean-css.
       concat = require('gulp-concat'), // Concatenate source files (possibly followed by ugly/mini -fy).
+      uglify = require('gulp-uglify'), // Minify JavaScript with UglifyJS2.
       sourcemaps = require('gulp-sourcemaps'), // Map proc'd/min'd/mod'd files to their original sources.
       browserSync = require('browser-sync').create(); // Browsersync cuts out repetitive manual tasks. 
 
 // define the default task and add the watch task to it
-gulp.task('default', ['watch']);
+// gulp.task('default', ['watch']);
+gulp.task('default', ['jshint', 'css', 'js', 'html', 'browserSync', 'watch']);
 
 // This task will lint our javascript (check for errors) using jshint and it'll
 // set it up to run this task each time we save a javascript file.
 gulp.task('jshint', function() {
-  return gulp.src('source/javascript/**/*.js')
+  return gulp.src('src/js/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -60,35 +61,56 @@ gulp.task('jshint', function() {
 // Sass Compilation with libsass.
 // Sass serves as a way to extend CSS giving support for variables,
 // nested rules, mixins, inline imports, and more.
-gulp.task('build-css', function() {
-  return gulp.src('source/scss/**/*.scss')
+gulp.task('css', function() {
+  return gulp.src('src/scss/**/*.scss')
   	.pipe(sourcemaps.init())  // Process the original sources
     	.pipe(sass())
     	.pipe(concat('styles.css'))
     	.pipe(gutil.env.type === 'production' ? cleanCSS() : gutil.noop())
     .pipe(sourcemaps.write()) // Add the map to modified source.
-    .pipe(gulp.dest('public/assets/stylesheets'))
+    .pipe(gulp.dest('public/assets/css'))
     .pipe(browserSync.reload({
     	stream: true
     }));
 });
 
 // Javascript concat and minify
-gulp.task('build-js', function() {
-  return gulp.src('source/javascript/**/*.js')
+gulp.task('js', function() {
+  return gulp.src('src/js/**/*.js')
     .pipe(sourcemaps.init())
       .pipe(concat('bundle.js'))
       // IF gulp is ran with '--type production' THEN uglify, ELSE do "no operation" (noop() utility).
       .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/assets/javascript'))
+    .pipe(gulp.dest('public/assets/js'))
     .pipe(browserSync.reload({
     	stream: true
     }));
 });
 
-// configure which files to watch and what tasks to use on file changes
+// HTML processing
+gulp.task('html', function() {
+  return gulp.src('src/template/**/*.html')
+    .pipe(gulp.dest('public'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
+});
+
+// Start the Browsersync server
+gulp.task('browserSync', function() {
+  browserSync.init(null, {
+    open: false,
+    server: {
+      baseDir: 'public'
+    }
+  });
+});
+
+// Configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
-  gulp.watch('source/javascript/**/*.js', ['jshint']);
-  gulp.watch('source/scss/**/*.scss', ['build-css']);
+  gulp.watch('src/scss/**/*.scss', ['css']);
+  gulp.watch('src/js/**/*.js', ['jshint', 'js']); //<-- I think we need to add also the task *js* here!
+  // gulp.watch('src/js/**/*.js', ['jshint']);
+  gulp.watch('src/template/**/*.html', ['html']);
 });
