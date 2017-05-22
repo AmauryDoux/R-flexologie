@@ -8,5 +8,4 @@ angular.module("reflexologie")
 
 
 function menu() {
-    this.title = "Ceci sera le menu";
 }
