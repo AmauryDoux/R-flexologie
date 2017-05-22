@@ -1,10 +1,12 @@
+/* ------- Menu latéral backoffice ------- */
+
 .menu-container {
     position: absolute;
     left:0;
     height: 100%;
-    width: 20%;
     background: #4B5258;
     color: white;
+    padding: 0 !important;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
@@ -19,6 +21,10 @@
     border-radius: 50%;
     width: 90px;
     margin: auto;
+}
+
+.menu-list {
+    width: 100%;
 }
 
 .menu-item {
@@ -44,3 +50,6 @@
     width: 100%;
     bottom: 0;
 }
+
+
+/* ------- FIN Menu latéral backoffice ------- */
