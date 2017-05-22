@@ -41,12 +41,23 @@
                 <td> Lundi 2 juin de 10h à 11h</td>
             </tr>
         </table>
-        <div id="maps">
+        <ul class="collapsible" data-collapsible="expandable">
+            <li>
+                <div class="collapsible-header"><i class="material-icons"></i>Lieu</div>
+                <div class="collapsible-body"><span>  <div id="maps">
             <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyATjR_53yrD5MEaLfbpsfh3NyMAIK2crxo&q=18,rue,mathieu+Bordeaux+France"
                 width="100%" height="300" style="border:0"></iframe>
-        </div>
-        <a class="waves-effect waves-light btn  val modal-action modal-close" ng-click="toast()"><i class="material-icons">done</i></a>
-        <a class="waves-effect waves-light btn red nope modal-action modal-close"  ng-click="nope()"><i class="material-icons">X</i></a>
+        </div></span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons"></i>Valider/supprimer</div>
+                <div class="collapsible-body">
+                    <a class="waves-effect waves-light btn  val modal-action modal-close" ng-click="toast()"><i class="material-icons">done</i></a>
+                    <a class="waves-effect waves-light btn red nope modal-action modal-close" ng-click="nope()"><i class="material-icons">X</i></a></div>
+            </li>
+        </ul>
+
+
     </div>
     <div class="modal-footer">
     </div>

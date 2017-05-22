@@ -18,4 +18,7 @@ function home($scope) {
      $scope.nope = function nope() {
         Materialize.toast('Rendez-vous annulé, un email est envoyé', 4000)
     }
+      $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
 }
