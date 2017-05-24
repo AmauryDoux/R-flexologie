@@ -37,7 +37,7 @@ router.route('/')
             if (err) {
                 res.send(err);
             }
-            res.send(rdv);
+            res.json({rdv});
         });
     })
     .post(function (req, res) {
@@ -66,7 +66,7 @@ router.route('/:rdv_id')
             if (err) {
                 res.send(err);
             }
-            res.send(rdv);
+            res.json({rdv});
         });
     })
     .put(function (req, res) {
@@ -118,7 +118,7 @@ routed.route('/')
             if (err) {
                 res.send(err);
             }
-            res.send(rdv);
+            res.json({rdv});
         });
     })
     .post(function (req, res) {
@@ -140,7 +140,7 @@ routed.route('/:rdv_id')
             if (err) {
                 res.send(err);
             }
-            res.send(rdv);
+            res.json({rdv});
         });
     })
     .put(function (req, res) {

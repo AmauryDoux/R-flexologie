@@ -1,6 +1,5 @@
 /* ------- Menu latéral backoffice ------- */
 html, body {
-    overflow: hidden;
     width: 100%;
     height: 100%;
     
@@ -9,11 +8,13 @@ html, body {
 }
 
 .menu-container {
+    position: fixed;
     background: #4B5258;
     color: white;
     padding: 0 !important;
+    left: 0px !important;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-    height: 2000px;
+    height: 100%;
 }
 
 .flex {
@@ -51,6 +52,12 @@ html, body {
     color:#4B5258;
 }
 
+.active {
+    cursor: pointer;
+    background: white;
+    color:#4B5258;
+}
+
 .bottom {
     padding: 10px !important;
     position: absolute;
@@ -59,3 +66,34 @@ html, body {
 
 
 /* ------- FIN Menu latéral backoffice ------- */
+
+
+.horaires {
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    background: blueviolet;
+}
+
+.fade {
+    width: 100%;
+    position: absolute;
+}
+
+.fade.ng-enter {
+  transition: all 0.2s ease-out;
+  top:100%;
+}
+
+.fade.ng-enter.ng-enter-active {
+  top:0;
+}
+
+.fade.ng-leave {
+  transition: all 0.2s ease-out;
+  top:0;
+}
+
+.fade.ng-leave.ng-leave-active {
+  top:100%;
+}
