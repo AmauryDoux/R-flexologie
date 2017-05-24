@@ -8,7 +8,6 @@ angular.module("reflexologie")
 
 
 function home($scope) {
-    this.title = "Ceci sera le home";
     $(document).ready(function () {
         $('.modal').modal();
     });
