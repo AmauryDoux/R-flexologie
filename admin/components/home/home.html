@@ -1,10 +1,9 @@
 
-<div class="row">
-    <div class="col s10 m10">
+<div class="row" ng-repeat="rdv in $ctrl.rdvs">
         <div class="card white darken-1">
             <div class="card-content black-text">
-                <span class="card-title">Michelle Miche</span>
-                <p>Bonjour, je me permets de vous contacter car j'ai vraiment besoin de soins de tout urgence.</p>
+                <span class="card-title">{{rdv.patient.nom}}, {{rdv.patient.prenom}}</span>
+                <p>{{rdv.patient.commentaire}}</p>
             </div>
             <div class="card-action">
                 <a class="waves-effect waves-light btn cyan accent-4" href="#client1">En savoir +</a>
@@ -13,9 +12,10 @@
             </div>
         </div>
     </div>
+    
 </div>
 
-<div id="client1" class="modal">
+<div id="client1" class="modal" >
     <div class="modal-content">
         <table class="striped responsive-table">
             <tr>
@@ -31,13 +31,13 @@
                 </thead>
             </tr>
             <tr>
-                <td>Michelle</td>
-                <td>Miche</td>
-                <td>18 rue mahieu bordeaux</td>
-                <td>06-46-88-30-07</td>
-                <td>Michelle.miche@gmail.com</td>
-                <td> Mal au dos</td>
-                <td> Lundi 2 juin de 10h à 11h</td>
+                <td>{{rdv.patient.nom}}</td>
+                <td>{{rdv.patient.Prenom}}</td>
+                <td>{{rdv.patient.lieu}}</td>
+                <td>{{rdv.patient.tel}}</td>
+                <td>{{rdv.patient.email}}</td>
+                <td> {{rdv.patient.commentaire}}</td>
+                <td> {{rdv.jour}} {{rdv.heureStart}} {{rdv.heureEnd}}</td>
             </tr>
         </table>
         <ul class="collapsible" data-collapsible="expandable">
