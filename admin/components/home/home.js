@@ -8,9 +8,7 @@ angular.module("reflexologie")
 
 
 function home($scope, $resource) {
-    $(document).ready(function () {
-        $('.modal').modal();
-    });
+
     $scope.toast = function toast() {
         Materialize.toast('Rendez-vous validé, un email est envoyé', 4000)
     }
@@ -23,8 +21,8 @@ function home($scope, $resource) {
 
     var ListRdv = $resource('/rdv');
     const vm = this;
-    ListRdv.get().$promise.then(function(Rdv){
-         vm.rdvs = Rdv.rdv;
-         console.log(Rdv.rdv)
+    ListRdv.get().$promise.then(function (Rdv) {
+        vm.rdvs = Rdv.rdv;
+        vm.infos = Rdv.rdv;
     })
 }
