@@ -2,4 +2,19 @@
     <div class="count">
         {{$ctrl.idontknow}}
     </div>
-</div>
+    <div>
+        <div class="form">
+            <form>
+                <input type="text" ng-model="jour" placeholder="jour" /><br>
+                <input type="text" ng-model="heureStart" placeholder="Heure début" /><br>
+                <input type="text" ng-model="heureEnd" placeholder="heure de fin" /><br>
+                <input type="text" ng-model="nom" placeholder="Nom" /><br>
+                <input type="text" ng-model="prenom" placeholder="Prénom" /><br>
+                <input type="text" ng-model="email" placeholder="email" /><br>
+                <input type="text" ng-model="tel" placeholder="tél" /><br>
+                <input type="text" ng-model="adresse" placeholder="lieu" /><br>
+                <input type="text" ng-model="commentaire" placeholder="commentaire" /><br>
+                <input type="submit" ng-click="addPost()">
+            </form>
+        </div>
+    </div>

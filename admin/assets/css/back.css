@@ -82,19 +82,19 @@ html, body {
 }
 
 .fade.ng-enter {
-  transition: all 0.5s ease-out;
-  top:100%;
+  transition: all 0.5s;
+  opacity:0;
 }
 
 .fade.ng-enter.ng-enter-active {
-  top:0;
+  opacity:1;
 }
 
 .fade.ng-leave {
-  transition: all 0.5s ease-out;
-  top:0;
+  transition: all 0.5s;
+  opacity:1;
 }
 
 .fade.ng-leave.ng-leave-active {
-  top:100%;
+  opacity:0;
 }
