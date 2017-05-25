@@ -1,3 +1,4 @@
+
 /* ------- Menu latéral backoffice ------- */
 html, body {
     width: 100%;
@@ -81,7 +82,7 @@ html, body {
 }
 
 .fade.ng-enter {
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
   top:100%;
 }
 
@@ -90,7 +91,7 @@ html, body {
 }
 
 .fade.ng-leave {
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
   top:0;
 }
 

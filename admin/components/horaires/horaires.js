@@ -3,9 +3,11 @@
 angular.module("reflexologie")
     .component("horaires", {
         templateUrl: "components/horaires/horaires.html",
-        controller : Horaires
+        controller: Horaires
     })
 
 
 function Horaires() {
+
+    this.title = "hello";
 }

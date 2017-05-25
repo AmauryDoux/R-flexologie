@@ -18,15 +18,16 @@ var app = angular.module("reflexologie", ["ui.router", "ngAnimate", "ngResource"
             },
             {
                 name: "rdv",
-                url: "/rendezvous",
+                url: "/rdv",
                 component: "rdv"
             }
         ];
-        $urlRouterProvider.otherwise("/horaires"); // Page par défaut
+        $urlRouterProvider.otherwise("/rdv"); // Page par défaut
         states.forEach(function (state) {
             $stateProvider.state(state);
         });
         
     });
+
 
 

@@ -1,20 +1,16 @@
 <div class="col s12 m4 l2 menu-container">
     <div class="flex"><img class="logo-nav" src="assets/img/logoBack-05.png"></div>
     <ul class="menu-list">
-        <a href="#">
-            <li class="menu-item waves-effect default"><i class="small material-icons">query_builder</i>
-                 <p>Mes Horaires</p>
-            </li>
-        </a>
-        <a href="#">
-            <li class="menu-item waves-effect default"><i class="small material-icons">recent_actors</i>
-                <p>Mes Rendez-vous</p>
-            </li>
-        </a>
+         <li class="menu-item waves-effect default" ui-sref="{{$ctrl.rdv}}" ui-sref-active="active"><i class="small material-icons">recent_actors</i>
+            <p>Mes Rendez-vous</p>
+        </li>
+        <li class="menu-item waves-effect default" ui-sref="{{$ctrl.horaires}}" ui-sref-active="active"><i class="small material-icons">query_builder</i>
+            <p>Mes Horaires</p>
+        </li>
     </ul>
     <ul class="menu-list">
-        <a href="#">
-            <li class="col s12 m4 l2 menu-item bottom waves-effect default"> <i class="small material-icons">power_settings_new</i>
+        <a ui-sref="#">
+            <li class="col s12 m12 l12 menu-item bottom waves-effect default"> <i class="small material-icons">power_settings_new</i>
                 <p>Deconnexion</p>
             </li>
         </a>
