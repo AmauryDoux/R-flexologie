@@ -1,7 +1,7 @@
-<div class="row" ng-repeat="rdv in $ctrl.rdvs  track by $index">
-    <div class="card white darken-1">
+<div  class="row" ng-repeat="rdv in $ctrl.rdvs  track by $index">
+    <div class="card  darken-1" ng-class="{'orange' : {{rdv.status == 0}}, 'green' : {{rdv.status == 1}}, 'red' : {{rdv.status == 2}}}">
         <button ng-click="deleted()"  data-id="{{rdv._id}}">delete</button>
-        <div class="card-content black-text">
+        <div class="card-content black-text"> 
             <span class="card-title">{{rdv.patient.nom}}, {{rdv.patient.prenom}}</span>
             <p>{{rdv.patient.commentaire}}</p>
         </div>
