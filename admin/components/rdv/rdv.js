@@ -1,13 +1,13 @@
 "use strict";
 
 angular.module("reflexologie")
-    .component("home", {
-        templateUrl: "components/home/home.html",
-        controller: home
+    .component("rdv", {
+        templateUrl: "components/rdv/rdv.html",
+        controller: Rdv
     })
 
 
-function home($scope, $resource) {
+function Rdv($scope, $resource) {
 
     $scope.toast = function toast() {
         Materialize.toast('Rendez-vous validé, un email est envoyé', 4000)
