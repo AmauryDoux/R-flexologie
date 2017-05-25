@@ -7,8 +7,10 @@ angular.module("reflexologie")
     })
 
 
-function Rdv($scope, $resource) {
-
+function Rdv($scope, $resource, $http) {
+    $scope.deleted = function(){
+        return $http.delete("/rdv/" + this.rdv._id)
+    }
     $scope.toast = function toast() {
         Materialize.toast('Rendez-vous validé, un email est envoyé', 4000)
     }

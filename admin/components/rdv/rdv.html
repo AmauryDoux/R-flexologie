@@ -1,5 +1,6 @@
 <div class="row" ng-repeat="rdv in $ctrl.rdvs  track by $index">
     <div class="card white darken-1">
+        <button ng-click="deleted()"  data-id="{{rdv._id}}">delete</button>
         <div class="card-content black-text">
             <span class="card-title">{{rdv.patient.nom}}, {{rdv.patient.prenom}}</span>
             <p>{{rdv.patient.commentaire}}</p>
