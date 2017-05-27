@@ -29,3 +29,16 @@ body {
     background-color: white;
     border-bottom: 4px solid #8BCED3;
 }
+
+.title {
+    text-align: center;
+}
+
+#portrait {
+    padding: 0;
+    border: 7px solid #8BCED3;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+    margin-left:12%; 
+}
