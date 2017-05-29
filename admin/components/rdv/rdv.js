@@ -7,7 +7,13 @@ angular.module("reflexologie")
     })
 
 
-function Rdv($scope, $resource, $http) {
+function Rdv($scope, $resource, $http, $sce) {
+
+    $scope.trustSrc = function (src) {
+        src = "https://www.google.com/maps/embed/v1/place?key=AIzaSyATjR_53yrD5MEaLfbpsfh3NyMAIK2crxo&q=" + this.rdv.patient.adresse;
+        return $sce.trustAsResourceUrl(src);
+    }
+
 
 
     $scope.deleted = function () {
@@ -15,6 +21,7 @@ function Rdv($scope, $resource, $http) {
     }
     $scope.toast = function toast() {
         Materialize.toast('Rendez-vous validé, un email est envoyé', 4000)
+        sendmail(this.rdv);
         return $http.put('/rdv/' + this.rdv._id, {
             jour: this.rdv.jour,
             heureStart: this.rdv.heureStart,
@@ -29,11 +36,11 @@ function Rdv($scope, $resource, $http) {
             },
             status: 1
         })
-
     }
     $scope.nope = function nope() {
         Materialize.toast('Rendez-vous annulé, un email est envoyé', 4000)
-         return $http.put('/rdv/' + this.rdv._id, {
+        sendmailCancel(this.rdv);
+        return $http.put('/rdv/' + this.rdv._id, {
             jour: this.rdv.jour,
             heureStart: this.rdv.heureStart,
             heureEnd: this.rdv.heureEnd,
@@ -58,4 +65,22 @@ function Rdv($scope, $resource, $http) {
         vm.rdvs = Rdv.rdv;
         vm.infos = Rdv.rdv;
     })
+    function sendmail(rdv) {
+        return $http({
+            method: 'POST',
+            url: '/sendmailVal',
+            contentType: "application/json",
+            data: rdv
+        });
+    };
+    function sendmailCancel(rdv) {
+        return $http({
+            method: 'POST',
+            url: '/sendmailSupr',
+            contentType: "application/json",
+            data: rdv
+        });
+    };
 }
+
+

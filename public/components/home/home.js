@@ -24,6 +24,15 @@ function Home($scope, $http) {
             status: 0
 
         }
+        sendmail(data);
         return $http.post("/rdv", data);
     }
+    function sendmail(rdv) {
+        return $http({
+            method: 'POST',
+            url: '/sendmail',
+            contentType: "application/json",
+            data: rdv
+        });
+    };
 }
