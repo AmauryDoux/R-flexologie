@@ -1,6 +1,13 @@
 'use strict';
 
-var app = angular.module("reflexologie", ["ui.router", "ngAnimate", "ngResource"])
+var app = angular.module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize"])
+    .directive('repeatDone', function () {
+        return function (scope, element, attrs) {
+            if (scope.$last) {
+                scope.$eval(attrs.repeatDone);
+            }
+        }
+    })
 
     .config(function ($stateProvider, $urlRouterProvider) {
         var states = [
@@ -11,15 +18,16 @@ var app = angular.module("reflexologie", ["ui.router", "ngAnimate", "ngResource"
             },
             {
                 name: "rdv",
-                url: "/rendezvous",
+                url: "/rdv",
                 component: "rdv"
             }
         ];
-        $urlRouterProvider.otherwise("/horaires"); // Page par défaut
+        $urlRouterProvider.otherwise("/rdv"); // Page par défaut
         states.forEach(function (state) {
             $stateProvider.state(state);
         });
         
     });
+
 
 

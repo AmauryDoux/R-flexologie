@@ -57,6 +57,7 @@ router.route('/')
                 res.send(err);
             }
             res.send({ message: 'Rdv created' });
+            console.log("j'ai envoie")
         })
     });
 
