@@ -40,7 +40,7 @@ const
         status: Number
     }),
     //Utilisation du schema sur  Rdv
-    Rdv = mongoose.model('Rdv', RdvShcema),
+    Rdv = mongoose.model('Rdv', RdvSchema),
     //instancation de la route router
     router = express.Router();
 //router --> Api
