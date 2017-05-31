@@ -44,7 +44,9 @@ const gulp  = require('gulp'),
       concat = require('gulp-concat'), // Concatenate source files (possibly followed by ugly/mini -fy).
       uglify = require('gulp-uglify'), // Minify JavaScript with UglifyJS2.
       sourcemaps = require('gulp-sourcemaps'), // Map proc'd/min'd/mod'd files to their original sources.
-      browserSync = require('browser-sync').create(); // Browsersync cuts out repetitive manual tasks. 
+      browserSync = require('browser-sync').create(), // Browsersync cuts out repetitive manual tasks.
+      babel = require('gulp-babel'); // Use next generation JS with Babel. It allows to use the last ES
+                                     // even with browsers that do not support it.
 
 // define the default task and add the watch task to it
 // gulp.task('default', ['watch']);
@@ -78,6 +80,9 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')
     .pipe(sourcemaps.init())
+    .pipe(babel({
+            presets: ['es2015']
+        }))
       .pipe(concat('bundle.js'))
       // IF gulp is ran with '--type production' THEN uglify, ELSE do "no operation" (noop() utility).
       .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
