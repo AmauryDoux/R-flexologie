@@ -34,11 +34,37 @@ body {
     text-align: center;
 }
 
+.flex {
+    display: flex;
+}
+
 #portrait {
+    margin: 70px auto;
+    width: 15vw;
+    height: 15vw;
+    position: absolute;
     padding: 0;
     border: 7px solid #8BCED3;
+    transition: all 1s;
     -ms-transform: rotate(45deg); /* IE 9 */
     -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
     transform: rotate(45deg);
     margin-left:12%; 
+}
+
+.txt {
+    margin: auto;
+    width: 40%;
+    position: absolute;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.quisuisje:hover #portrait {
+    margin-left: 20% !important;
+}
+
+.quisuisje:hover .txt {
+    opacity: 1;
+    margin-left: 20% !important;
 }
