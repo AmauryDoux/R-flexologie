@@ -1,51 +1,53 @@
 "use strict";
 
-let express = require("express");
-let app = express();
-const nodemailer = require('nodemailer');
-const xoauth2 = require('xoauth2');
-app.use(express.static('public'))
-var bodyParser = require('body-parser'),
+const
+    express = require("express"),
+    app = express(),
+    bodyParser = require('body-parser'),
+    nodemailer = require('nodemailer'),
+    xoauth2 = require('xoauth2'),
     mongoose = require('mongoose'),
-    port = process.env.PORT || 3000
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+    port = process.env.PORT || 3000;
 
-app.all('*', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
-
-
-app.use('/admin', express.static('admin'));
+app
+    .all('*', function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    })
+    .use(express.static('public'))
+    .use('/admin', express.static('admin'))
+    .use(bodyParser.urlencoded({ extended: true }))
+    .use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost/bdd');
 
-var RdvShema = mongoose.Schema({
-    jour: String,
-    heureStart: String,
-    heureEnd: String,
-    patient: {
-        nom: String,
-        prenom: String,
-        email: String,
-        tel: String,
-        adresse: String,
-        commentaire: String
-    },
-    status: Number
-});
-var Rdv = mongoose.model('Rdv', RdvShema);
-var router = express.Router();
-router.route('/')
+const
+    RdvShema = mongoose.Schema({
+        jour: String,
+        heureStart: String,
+        heureEnd: String,
+        patient: {
+            nom: String,
+            prenom: String,
+            email: String,
+            tel: String,
+            adresse: String,
+            commentaire: String
+        },
+        status: Number
+    }),
+    Rdv = mongoose.model('Rdv', RdvShema),
+    router = express.Router();
+
+router
+    .route('/')
     .get(function (req, res) {
         Rdv.find(function (err, rdv) {
             if (err) {
                 res.send(err);
             }
             res.json({ rdv });
-
         });
     })
     .post(function (req, res) {
@@ -69,7 +71,9 @@ router.route('/')
         })
     });
 
-router.route('/:rdv_id')
+
+router
+    .route('/:rdv_id')
     .get(function (req, res) {
         Rdv.findOne({ _id: req.params.rdv_id }, function (err, rdv) {
             if (err) {
@@ -111,17 +115,20 @@ router.route('/:rdv_id')
         });
     });
 
+
 app.use("/rdv", router);
 
-var RdvJourShema = mongoose.Schema({
-    jour: String,
-    heureStart: String,
-    heureEnd: String
-});
-var RdvJour = mongoose.model('RdvJour', RdvJourShema);
+const
+    RdvJourShema = mongoose.Schema({
+        jour: String,
+        heureStart: String,
+        heureEnd: String
+    }),
+    RdvJour = mongoose.model('RdvJour', RdvJourShema),
+    routed = express.Router();
 
-var routed = express.Router();
-routed.route('/')
+routed
+    .route('/')
     .get(function (req, res) {
         RdvJour.find(function (err, rdv) {
             if (err) {
@@ -143,7 +150,8 @@ routed.route('/')
         })
     });
 
-routed.route('/:rdv_id')
+routed
+    .route('/:rdv_id')
     .get(function (req, res) {
         RdvJour.findOne({ _id: req.params.rdv_id }, function (err, rdv) {
             if (err) {
@@ -178,6 +186,7 @@ routed.route('/:rdv_id')
         });
     });
 
+
 app.use("/RdvJour", routed);
 
 
@@ -197,7 +206,7 @@ app.post('/sendmailVal', function (req, res) {
         from: 'Alieno<alienodev@gmail.com>',
         to: req.body.patient.email,
         subject: 'Rendez vous validé',
-        text: 'Bonjour,  je vous confirme votre rendez vous le ' + req.body.jour +' de ' + req.body.heureStart + ' h  à ' + req.body.heureEnd + ' H'
+        text: 'Bonjour,  je vous confirme votre rendez vous le ' + req.body.jour + ' de ' + req.body.heureStart + ' h  à ' + req.body.heureEnd + ' H'
     }
     transporter.sendMail(mailOptions, function (err, res) {
         if (err) {
@@ -243,7 +252,7 @@ app.post('/sendmail', function (req, res) {
     var transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
-        secure: true, 
+        secure: true,
         auth: {
             user: 'alienodev@gmail.com>',
             pass: 'WildAlieno'
@@ -253,7 +262,7 @@ app.post('/sendmail', function (req, res) {
         from: 'Alieno<alienodev@gmail.com>',
         to: req.body.patient.email + ', alienodev@gmail.com>',
         subject: 'Rendez vous',
-        text: 'Bonjour, vous avez pris un rendez-vous le' + req.body.jour + 'a ' + req.body.heureStart + 'h , à l\'adresse : '+ req.body.patient.adresse +'Je reviendrais vers vous pour vous confirmer votre rendez vous'
+        text: 'Bonjour, vous avez pris un rendez-vous le' + req.body.jour + 'a ' + req.body.heureStart + 'h , à l\'adresse : ' + req.body.patient.adresse + 'Je reviendrais vers vous pour vous confirmer votre rendez vous'
     }
     transporter.sendMail(mailOptions, function (err, res) {
         if (err) {
@@ -267,5 +276,4 @@ app.post('/sendmail', function (req, res) {
 });
 app.listen(port, function () {
     console.log("Adresse du serveur : http://localhost:3000");
-
 }); 
