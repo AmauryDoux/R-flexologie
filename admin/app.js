@@ -6,7 +6,7 @@ var app = angular.module("reflexologie", ["ui.router", "ngAnimate"])
         var states = [
             {
                 name: "home",
-                url: "",
+                url: "/admin",
                 component: "home"
             }
         ];
