@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/garciamarco33/R-flexologie#readme",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.3",
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
-    "angular-ui-router": "^1.0.0-rc.1",
-    "bulma": "^0.4.1"
+    "angular-resource": "^1.6.4",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.98.2"
   }
 }

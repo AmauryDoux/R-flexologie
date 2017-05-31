@@ -3,10 +3,11 @@
 angular.module("reflexologie")
     .component("menuBack", {
         templateUrl: "components/menuBack/menuBack.html",
-        controller : menu
+        controller : Menu
     })
 
 
-function menu() {
-    this.title = "Ceci sera le menu";
+function Menu() {
+    this.horaires= "horaires";
+    this.rdv= "rdv";
 }

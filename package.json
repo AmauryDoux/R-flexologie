@@ -18,6 +18,15 @@
   },
   "homepage": "https://github.com/garciamarco33/R-flexologie#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "angular-resource": "^1.6.4",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-public-ip": "^1.0.1",
+    "mongoose": "^4.10.2",
+    "nodemailer": "^4.0.1",
+    "xoauth2": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

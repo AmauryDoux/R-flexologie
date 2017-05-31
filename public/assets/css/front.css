@@ -1,0 +1,31 @@
+body {
+    height: 2000px;
+}
+
+.test {
+    height: 500px;
+    background: grey;
+}
+
+#nav-test {
+    overflow: hidden !important;
+    height: 68px;
+    width: 100%;
+    background: pink;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.nav-item {
+    color: #8BCED3;
+    transition: all 200ms;
+}
+
+.nav-item:hover {
+    background-color: white;
+    border-bottom: 4px solid #8BCED3;
+}
