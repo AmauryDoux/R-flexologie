@@ -189,12 +189,12 @@ app.post('/sendmailVal', function (req, res) {
         port: 465,
         secure: true, // use SSL
         auth: {
-            user: 'julien.leotier@gmail.com',
-            pass: '32972vye'
+            user: 'alienodev@gmail.com>',
+            pass: 'WildAlieno'
         }
     })
     var mailOptions = {
-        from: 'julien<julien.leotier@gmail.com',
+        from: 'Alieno<alienodev@gmail.com>',
         to: req.body.patient.email,
         subject: 'Rendez vous validé',
         text: 'Bonjour,  je vous confirme votre rendez vous le ' + req.body.jour +' de ' + req.body.heureStart + ' h  à ' + req.body.heureEnd + ' H'
@@ -217,15 +217,16 @@ app.post('/sendmailSupr', function (req, res) {
         port: 465,
         secure: true, // use SSL
         auth: {
-            user: 'julien.leotier@gmail.com',
-            pass: '32972vye'
+            user: 'alienodev@gmail.com',
+            pass: 'WildAlieno'
         }
     })
     var mailOptions = {
-        from: 'julien<julien.leotier@gmail.com',
+        from: 'Alieno<alienodev@gmail.com>',
         to: req.body.patient.email,
         subject: 'Rendez vous annulé',
-        text: 'Bonjour, je suis dans le regret de devoir anulé notre rendez vous'
+        text: 'je suis un texte invisible',
+        html: '<h1>hello</h1>'
     }
     transporter.sendMail(mailOptions, function (err, res) {
         if (err) {
@@ -244,13 +245,13 @@ app.post('/sendmail', function (req, res) {
         port: 465,
         secure: true, 
         auth: {
-            user: 'julien.leotier@gmail.com',
-            pass: '32972vye'
+            user: 'alienodev@gmail.com>',
+            pass: 'WildAlieno'
         }
     })
     var mailOptions = {
-        from: 'julien<julien.leotier@gmail.com',
-        to: req.body.patient.email + ', julien.leotier@gmail.com',
+        from: 'Alieno<alienodev@gmail.com>',
+        to: req.body.patient.email + ', alienodev@gmail.com>',
         subject: 'Rendez vous',
         text: 'Bonjour, vous avez pris un rendez-vous le' + req.body.jour + 'a ' + req.body.heureStart + 'h , à l\'adresse : '+ req.body.patient.adresse +'Je reviendrais vers vous pour vous confirmer votre rendez vous'
     }
