@@ -1,7 +1,6 @@
 body {
-    height: 2000px;
+    height:2000px;
 }
-
 .test {
     height: 500px;
     background: grey;
@@ -38,33 +37,35 @@ body {
     display: flex;
 }
 
+.expand {
+    margin: 20px auto;
+    width: 20vw;
+    transition: all 0.7s;
+    display: inline-flex;
+    height: 20vw;
+}
+
+
 #portrait {
-    margin: 70px auto;
-    width: 15vw;
-    height: 15vw;
-    position: absolute;
-    padding: 0;
+    margin-top : 50px;
+    margin : auto;
+    width: 20vw;
     border: 7px solid #8BCED3;
-    transition: all 1s;
-    -ms-transform: rotate(45deg); /* IE 9 */
-    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
-    transform: rotate(45deg);
-    margin-left:12%; 
 }
 
 .txt {
-    margin: auto;
-    width: 40%;
-    position: absolute;
+    min-width: 40vw;
+    margin-left: -20vw;
     opacity: 0;
-    transition: all 1s;
-}
-
-.quisuisje:hover #portrait {
-    margin-left: 20% !important;
+    transition: margin-left 0.5s, opacity 0.3s;
 }
 
 .quisuisje:hover .txt {
+    margin-left: 5vw;
     opacity: 1;
-    margin-left: 20% !important;
+    transition: margin-left 0.5s, opacity 1s;
+}
+
+.quisuisje:hover .expand {
+    width: 80%;
 }

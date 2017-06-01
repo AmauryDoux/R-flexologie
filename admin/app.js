@@ -5,17 +5,8 @@ const config = ["$stateProvider", "$urlRouterProvider", Config];
 angular
 
     .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize"])
-
-    .directive('repeatDone', function () {
-        return function (scope, element, attrs) {
-            if (scope.$last) {
-                scope.$eval(attrs.repeatDone);
-            }
-        }
-    })
-
+    
     .config(config)
-
 
 function Config($stateProvider, $urlRouterProvider) {
     var states = [

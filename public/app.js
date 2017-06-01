@@ -17,7 +17,7 @@ function Config($stateProvider, $urlRouterProvider) {
             component: "home"
         }
     ];
-
+    
     $urlRouterProvider.otherwise("/"); // Page par défaut
     states.forEach(function (state) {
         $stateProvider.state(state);
