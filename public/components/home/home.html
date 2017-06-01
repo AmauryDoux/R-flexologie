@@ -4,40 +4,40 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="first_name" type="text" class="validate">
+                        <input id="first_name" type="text" class="validate" ng-modal="prenom">
                         <label for="first_name">Prenom</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="last_name" type="text" class="validate">
+                        <input id="last_name" type="text" class="validate" ng-modal="nom">
                         <label for="last_name">Nom</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="lieu" type="text" class="validate">
+                        <input id="lieu" type="text" class="validate" ng-modal="adresse">
                         <label for="adresse">Adresse</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="tel" type="text" class="validate">
+                        <input id="tel" type="text" class="validate" ng-modal="tel">
                         <label for="tel">Téléphone</label>
                     </div>
 
                     <div class="input-field col s6">
-                        <input id="email" type="email" class="validate">
+                        <input id="email" type="email" class="validate" ng-modal="email">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="commentaire" type="text" class="validate">
+                        <input id="commentaire" type="text" class="validate" ng-modal="com">
                         <label for="commentaire">Comentaire</label>
                     </div>
                 </div>
 
                 <div class="input-field col s12">
-                    <select ng-model="selectHS">
+                    <select ng-model="heureStart">
                         <option value="" disabled selected>Sélection Heude de début</option>
                         <option value="9h00">9h00</option>
                         <option value="10h30">10h30</option>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="input-field col s12">
-                    <select ng-model="selectHE">
+                    <select ng-model="heureEnd">
                         <option value="" disabled selected>Sélection Heude de fin</option>
                         <option value="10h00">10h00</option>
                         <option value="11h30">11h30</option>
@@ -58,10 +58,11 @@
                         <option value="18h00">18h00</option>
                     </select>
                 </div>
-                <input class="chips chips-autocomplete" ng-model="auto">
+                <input class="chips chips-autocomplete" ng-model="jour">
                 </input>
                 <input type="submit" ng-disabled='PatientForm.$invalid' ng-click="addPost()">
 
             </form>
         </div>
     </div>
+</div>

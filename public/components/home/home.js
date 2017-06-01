@@ -19,11 +19,12 @@ function Home($scope, $http) {
                 email: $scope.email,
                 tel: $scope.tel,
                 adresse: $scope.adresse,
-                commentaire: $scope.addPost
+                commentaire: $scope.com
             },
             status: 0
 
         }
+
         sendmail(data);
         return $http.post("/rdv", data);
     }
