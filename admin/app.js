@@ -1,17 +1,34 @@
 'use strict';
 
-var app = angular.module("reflexologie", ["ui.router", "ngAnimate"])
 
-    .config(function ($stateProvider, $urlRouterProvider) {
-        var states = [
-            {
-                name: "home",
-                url: "/admin",
-                component: "home"
-            }
-        ];
-        $urlRouterProvider.otherwise(""); // Page par défaut
-        states.forEach(function (state) {
-            $stateProvider.state(state);
-        });
+const config = ["$stateProvider", "$urlRouterProvider", Config];
+
+
+angular
+
+    .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize"])
+    
+    .config(config)
+
+function Config($stateProvider, $urlRouterProvider) {
+    var states = [
+        {
+            name: "horaires",
+            url: "/horaires",
+            component: "horaires"
+        },
+        {
+            name: "rdv",
+            url: "/rdv",
+            component: "rdv"
+        }
+    ];
+    $urlRouterProvider.otherwise("/rdv"); // Page par défaut
+    states.forEach(function (state) {
+        $stateProvider.state(state);
     });
+
+};
+
+
+
