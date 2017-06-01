@@ -9,5 +9,25 @@ angular.module("reflexologie")
 
 function Horaires() {
 
-    this.title = "hello";
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+  
+
+  $('.chips').material_chip();
+  $('.chips-autocomplete').material_chip({
+    autocompleteOptions: {
+      data: {
+        'Lundi': null,
+        'Mardi': null,
+        'Mercredi': null,
+        'Jeudi': null, 
+        'Vendredi': null
+      },
+      limit: Infinity,
+      minLength: 1
+    }
+  });
+        
+
 }
