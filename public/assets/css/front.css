@@ -29,8 +29,14 @@ body {
     border-bottom: 4px solid #8BCED3;
 }
 
+/* -------- Qui Suis-Je ? --------*/
+
+.material-icons {
+    color : #80cbc4;
+}
+
 .title {
-    text-align: center;
+    margin: auto;
 }
 
 .flex {
@@ -38,8 +44,8 @@ body {
 }
 
 .expand {
-    margin: 20px auto;
-    width: 20vw;
+    margin: auto;
+    width: 15vw;
     transition: all 0.7s;
     display: inline-flex;
     height: 20vw;
@@ -49,8 +55,8 @@ body {
 #portrait {
     margin-top : 50px;
     margin : auto;
-    width: 20vw;
-    border: 7px solid #8BCED3;
+    width: 15vw;
+    border: 6px solid #80cbc4;
 }
 
 .txt {
