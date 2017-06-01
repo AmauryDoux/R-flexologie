@@ -1,14 +1,13 @@
 "use strict";
-
+//Requiere 
 const
     express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
     nodemailer = require('nodemailer'),
-    xoauth2 = require('xoauth2'),
     mongoose = require('mongoose'),
     port = process.env.PORT || 3000;
-
+//Utilisation de app, c'est a dire d'express
 app
     .all('*', function (req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
@@ -20,10 +19,13 @@ app
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json());
 
+//On se connect à mongodb
 mongoose.connect('mongodb://localhost/bdd');
 
+
+//Création du shema
 const
-    RdvShema = mongoose.Schema({
+    RdvSchema = mongoose.Schema({
         jour: String,
         heureStart: String,
         heureEnd: String,
@@ -37,9 +39,11 @@ const
         },
         status: Number
     }),
-    Rdv = mongoose.model('Rdv', RdvShema),
+    //Utilisation du schema sur  Rdv
+    Rdv = mongoose.model('Rdv', RdvSchema),
+    //instancation de la route router
     router = express.Router();
-
+//router --> Api
 router
     .route('/')
     .get(function (req, res) {
@@ -115,18 +119,22 @@ router
         });
     });
 
-
+//chemin
 app.use("/rdv", router);
 
+
+//Nouveau schema
 const
-    RdvJourShema = mongoose.Schema({
+    RdvJourSchema = mongoose.Schema({
         jour: String,
         heureStart: String,
         heureEnd: String
     }),
-    RdvJour = mongoose.model('RdvJour', RdvJourShema),
+    RdvJour = mongoose.model('RdvJour', RdvJourSchema),
     routed = express.Router();
 
+
+//API routed
 routed
     .route('/')
     .get(function (req, res) {
@@ -274,6 +282,16 @@ app.post('/sendmail', function (req, res) {
     res.send({ message: 'Rdv created' });
 
 });
+     //**********************************************//
+    //                                              //
+   //        LA PLACE POUR AUTHENTIFICATION        //
+  //          DE MASS                             //
+ //                                              //
+//**********************************************//
+
+
+
+//On finit avec un beau listen
 app.listen(port, function () {
     console.log("Adresse du serveur : http://localhost:3000");
 }); 
