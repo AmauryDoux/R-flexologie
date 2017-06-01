@@ -6,7 +6,6 @@ angular.module("reflexologie")
         controller: Rdv
     })
 
-
 function Rdv($scope, $resource, $http, $sce) {
 
     $scope.trustSrc = function (src) {
@@ -21,6 +20,7 @@ function Rdv($scope, $resource, $http, $sce) {
     }
     $scope.toast = function toast() {
         Materialize.toast('Rendez-vous validé, un email est envoyé', 4000)
+
         sendmail(this.rdv);
         return $http.put('/rdv/' + this.rdv._id, {
             jour: this.rdv.jour,
@@ -36,6 +36,7 @@ function Rdv($scope, $resource, $http, $sce) {
             },
             status: 1
         })
+
     }
     $scope.nope = function nope() {
         Materialize.toast('Rendez-vous annulé, un email est envoyé', 4000)

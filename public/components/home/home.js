@@ -24,6 +24,7 @@ function Home($scope, $http) {
             status: 0
 
         }
+
         sendmail(data);
         return $http.post("/rdv", data);
     }

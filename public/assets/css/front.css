@@ -1,7 +1,6 @@
 body {
-    height: 2000px;
+    height:2000px;
 }
-
 .test {
     height: 500px;
     background: grey;
@@ -28,4 +27,45 @@ body {
 .nav-item:hover {
     background-color: white;
     border-bottom: 4px solid #8BCED3;
+}
+
+.title {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.expand {
+    margin: 20px auto;
+    width: 20vw;
+    transition: all 0.7s;
+    display: inline-flex;
+    height: 20vw;
+}
+
+
+#portrait {
+    margin-top : 50px;
+    margin : auto;
+    width: 20vw;
+    border: 7px solid #8BCED3;
+}
+
+.txt {
+    min-width: 40vw;
+    margin-left: -20vw;
+    opacity: 0;
+    transition: margin-left 0.5s, opacity 0.3s;
+}
+
+.quisuisje:hover .txt {
+    margin-left: 5vw;
+    opacity: 1;
+    transition: margin-left 0.5s, opacity 1s;
+}
+
+.quisuisje:hover .expand {
+    width: 80%;
 }

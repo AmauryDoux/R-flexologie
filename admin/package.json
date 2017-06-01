@@ -20,6 +20,7 @@
     "@uirouter/angularjs": "^1.0.3",
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
+    "angular-materialize": "^0.2.2",
     "angular-resource": "^1.6.4",
     "jquery": "^3.2.1",
     "materialize-css": "^0.98.2"
