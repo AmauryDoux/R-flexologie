@@ -1,20 +1,67 @@
 <div class="container">
-    <div class="count">
-        {{$ctrl.idontknow}}
-    </div>
     <div>
-        <div class="form">
-            <form name="PatientForm">
-                <input type="text" ng-model="jour" placeholder="jour" required/><br>
-                <input type="text" ng-model="heureStart" placeholder="Heure début" required /><br>
-                <input type="text" ng-model="heureEnd" placeholder="heure de fin"  required/><br>
-                <input type="text" ng-model="nom" placeholder="Nom" required/><br>
-                <input type="text" ng-model="prenom" placeholder="Prénom" required/><br>
-                <input type="text" ng-model="email" placeholder="email" required/><br>
-                <input type="text" ng-model="tel" placeholder="tél" required/><br>
-                <input type="text" ng-model="adresse" placeholder="lieu" required/><br>
-                <input type="text" ng-model="commentaire" placeholder="commentaire" required/><br>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="first_name">Prenom</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Nom</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="lieu" type="text" class="validate">
+                        <label for="adresse">Adresse</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="tel" type="text" class="validate">
+                        <label for="tel">Téléphone</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="commentaire" type="text" class="validate">
+                        <label for="commentaire">Comentaire</label>
+                    </div>
+                </div>
+
+                <div class="input-field col s12">
+                    <select ng-model="selectHS">
+                        <option value="" disabled selected>Sélection Heude de début</option>
+                        <option value="9h00">9h00</option>
+                        <option value="10h30">10h30</option>
+                        <option value="14h00">14h00</option>
+                        <option value="15H30">15h30</option>
+                        <option value="17h00">17h00</option>
+                    </select>
+                    <label>Rendez-vous</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <select ng-model="selectHE">
+                        <option value="" disabled selected>Sélection Heude de fin</option>
+                        <option value="10h00">10h00</option>
+                        <option value="11h30">11h30</option>
+                        <option value="15h00">15h00</option>
+                        <option value="16h30">16h30</option>
+                        <option value="18h00">18h00</option>
+                    </select>
+                </div>
+                <input class="chips chips-autocomplete" ng-model="auto">
+                </input>
                 <input type="submit" ng-disabled='PatientForm.$invalid' ng-click="addPost()">
+
             </form>
         </div>
     </div>

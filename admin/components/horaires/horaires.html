@@ -1,3 +1,31 @@
-<div class="horaires">
-    {{$ctrl.title}}
+<div class="input-field col s12">
+    <select ng-model="selectHS">
+      <option value="" disabled selected>Sélection Heude de début</option>
+      <option value="9h00">9h00</option>
+      <option value="10h30">10h30</option>
+      <option value="14h00">14h00</option>
+      <option value="15H30">15h30</option>
+      <option value="17h00">17h00</option>
+    </select>
+    <label>Rendez-vous</label>
 </div>
+
+<div class="input-field col s12">
+    <select ng-model="selectHE">
+      <option value="" disabled selected>Sélection Heude de fin</option>
+      <option value="10h00">10h00</option>
+      <option value="11h30">11h30</option>
+      <option value="15h00">15h00</option>
+      <option value="16h30">16h30</option>
+      <option value="18h00">18h00</option>
+    </select>
+</div>
+
+
+<input class="chips chips-autocomplete" ng-model="auto">
+</input>
+
+<button>Valider</button>
+
+
+<p> Vous avez selectionner que vous êtes disponible {{auto}} de {{selectHS}} à {{selectHE}} </p>
