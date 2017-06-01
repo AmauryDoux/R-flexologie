@@ -206,7 +206,7 @@ app.post('/sendmailVal', function (req, res) {
         port: 465,
         secure: true, // use SSL
         auth: {
-            user: 'alienodev@gmail.com>',
+            user: 'alienodev@gmail.com',
             pass: 'WildAlieno'
         }
     })
@@ -262,13 +262,13 @@ app.post('/sendmail', function (req, res) {
         port: 465,
         secure: true,
         auth: {
-            user: 'alienodev@gmail.com>',
+            user: 'alienodev@gmail.com',
             pass: 'WildAlieno'
         }
     })
     var mailOptions = {
         from: 'Alieno<alienodev@gmail.com>',
-        to: req.body.patient.email + ', alienodev@gmail.com>',
+        to: req.body.patient.email + ', alienodev@gmail.com',
         subject: 'Rendez vous',
         text: 'Bonjour, vous avez pris un rendez-vous le' + req.body.jour + 'a ' + req.body.heureStart + 'h , à l\'adresse : ' + req.body.patient.adresse + 'Je reviendrais vers vous pour vous confirmer votre rendez vous'
     }
