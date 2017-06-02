@@ -1,9 +1,8 @@
-
 /* ------- Menu latéral backoffice ------- */
+
 html, body {
     width: 100%;
     height: 100%;
-    
     margin: 0;
     padding: 0;
 }
@@ -14,7 +13,7 @@ html, body {
     color: white;
     padding: 0 !important;
     left: 0px !important;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     height: 100%;
 }
 
@@ -43,20 +42,21 @@ html, body {
     transition: all 200ms;
     padding: 10px;
 }
+
 .menu-item p {
- margin: auto 0 auto 5px;
+    margin: auto 0 auto 5px;
 }
 
 .menu-item:hover {
     cursor: pointer;
     background: white;
-    color:#4B5258;
+    color: #4B5258;
 }
 
 .active {
     cursor: pointer;
     background: white;
-    color:#4B5258;
+    color: #4B5258;
 }
 
 .bottom {
@@ -67,7 +67,6 @@ html, body {
 
 
 /* ------- FIN Menu latéral backoffice ------- */
-
 
 .horaires {
     width: 100%;
@@ -82,20 +81,21 @@ html, body {
 }
 
 .fade.ng-enter {
-  transition: all 0.5s;
-  opacity:0;
+    transition: all 0.5s;
+    opacity: 0;
 }
 
 .fade.ng-enter.ng-enter-active {
-  opacity:1;
+    opacity: 1;
 }
 
 .fade.ng-leave {
-  transition: all 0.5s;
-  opacity:1;
+    transition: all 0.5s;
+    opacity: 1;
 }
 
 .fade.ng-leave.ng-leave-active {
+<<<<<<< HEAD
   opacity:0;
 }
 
@@ -109,3 +109,62 @@ thead {
     background: #EEEEED;
     font-weight: 500;
 }
+=======
+    opacity: 0;
+}
+
+
+/* ------- Authentification------- */
+
+.flex {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.authForm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#authContainer {
+    margin: auto;
+    width: 50vw;
+    padding: 2%;
+    border-style: solid;
+    border-width: thin;
+    border-color: #8BCED3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#btnConnexion {
+    background-color: #8BCED3;
+    margin-bottom: 15px;
+}
+
+.logoCont {
+    height: 15vh;
+    width: 15vw;
+}
+
+.imgAuth {
+    margin: 15px 0;
+    width: 30%;
+}
+
+@media only screen and (max-width: 500px) {
+    .imgAuth {
+        width: 70%;
+        margin-bottom: 100px;
+    }
+    #authContainer {
+        border-style: none;
+        width: 90vw;
+    }
+
+
+}
+>>>>>>> 0d7150d4a857c9a50c5eae9255d554b6841e535b

@@ -1,12 +1,14 @@
 "use strict";
-//Requiere 
+//Requiere
 const
     express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
     nodemailer = require('nodemailer'),
     mongoose = require('mongoose'),
-    port = process.env.PORT || 3000;
+    port = process.env.PORT || 3000,
+    path = require('path');
+
 //Utilisation de app, c'est a dire d'express
 app
     .all('*', function (req, res, next) {
@@ -16,12 +18,12 @@ app
     })
     .use(express.static('public'))
     .use('/admin', express.static('admin'))
+    .use('/auth', express.static('auth'))
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json());
 
 //On se connect à mongodb
 mongoose.connect('mongodb://localhost/bdd');
-
 
 //Création du shema
 const
@@ -200,7 +202,7 @@ app.use("/RdvJour", routed);
 
 
 
-//Envoie de mail a La validation 
+//Envoie de mail a La validation
 app.post('/sendmailVal', function (req, res) {
     var transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -295,4 +297,4 @@ app.post('/sendmail', function (req, res) {
 //On finit avec un beau listen
 app.listen(port, function () {
     console.log("Adresse du serveur : http://localhost:3000");
-}); 
+});
