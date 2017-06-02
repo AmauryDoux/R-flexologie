@@ -1,11 +1,12 @@
 'use strict';
 
+
 const config = ["$stateProvider", "$urlRouterProvider", Config];
 
 angular
 
     .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize"])
-    
+
     .config(config)
 
 function Config($stateProvider, $urlRouterProvider) {
@@ -19,7 +20,8 @@ function Config($stateProvider, $urlRouterProvider) {
             name: "rdv",
             url: "/rdv",
             component: "rdv"
-        }
+        },
+
     ];
 
     $urlRouterProvider.otherwise("/rdv"); // Page par défaut
@@ -28,6 +30,3 @@ function Config($stateProvider, $urlRouterProvider) {
     });
 
 };
-
-
-
