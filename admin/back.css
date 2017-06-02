@@ -1,0 +1,14 @@
+
+#maps {
+    position: relative;
+}
+
+.val {
+    position: absolute;
+    right: 52%;
+}
+
+.nope {
+    position: absolute;
+    left: 52%;
+}
