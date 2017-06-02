@@ -24,7 +24,7 @@ function Config($stateProvider, $urlRouterProvider) {
         },
 
     ];
-    $urlRouterProvider.otherwise("/auth"); // Page par défaut
+    $urlRouterProvider.otherwise("/"); // Page par défaut
     states.forEach(function (state) {
         $stateProvider.state(state);
     });
