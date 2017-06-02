@@ -98,3 +98,14 @@ html, body {
 .fade.ng-leave.ng-leave-active {
   opacity:0;
 }
+
+/* ----- card ----- */
+
+.background {
+    background: white;
+}
+
+thead {
+    background: #EEEEED;
+    font-weight: 500;
+}

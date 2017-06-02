@@ -115,6 +115,7 @@ router
             if (err) {
                 res.send(err);
             }
+            console.log("hello");
             res.send({ message: 'Rdv deleted' });
         });
     });
