@@ -19,7 +19,7 @@ function Home($scope, $http) {
                 email: $scope.email,
                 tel: $scope.tel,
                 adresse: $scope.adresse,
-                commentaire: $scope.addPost
+                commentaire: $scope.com
             },
             status: 0
 
@@ -36,4 +36,23 @@ function Home($scope, $http) {
             data: rdv
         });
     };
+       $(document).ready(function () {
+        $('select').material_select();
+    });
+  
+
+  $('.chips').material_chip();
+  $('.chips-autocomplete').material_chip({
+    autocompleteOptions: {
+      data: {
+        'Lundi': null,
+        'Mardi': null,
+        'Mercredi': null,
+        'Jeudi': null, 
+        'Vendredi': null
+      },
+      limit: Infinity,
+      minLength: 1
+    }
+  });
 }

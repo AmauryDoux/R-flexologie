@@ -1,7 +1,4 @@
 <div class="container">
-    <div class="count">
-        {{$ctrl.idontknow}}
-    </div>
     <div>
         <div class="form">
             <form name="PatientForm">
@@ -14,7 +11,11 @@
                 <input type="text" ng-model="tel" placeholder="tél" required/><br>
                 <input type="text" ng-model="adresse" placeholder="lieu" required/><br>
                 <input type="text" ng-model="commentaire" placeholder="commentaire" required/><br>
+                
                 <input type="submit" ng-disabled='PatientForm.$invalid' ng-click="addPost()">
             </form>
         </div>
+            </form>
+        </div>
     </div>
+</div>
