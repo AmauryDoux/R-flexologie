@@ -139,3 +139,16 @@ html, body {
     margin: 15px 0;
     width: 30%;
 }
+
+@media only screen and (max-width: 500px) {
+    .imgAuth {
+        width: 70%;
+        margin-bottom: 100px;
+    }
+    #authContainer {
+        border-style: none;
+        width: 90vw;
+    }
+
+
+}
