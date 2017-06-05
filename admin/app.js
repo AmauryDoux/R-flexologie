@@ -1,12 +1,12 @@
 'use strict';
 
-const config = ["$stateProvider", "$urlRouterProvider", Config];
 
+const config = ["$stateProvider", "$urlRouterProvider", Config];
 
 angular
 
     .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize"])
-    
+
     .config(config)
 
 function Config($stateProvider, $urlRouterProvider) {
@@ -20,14 +20,18 @@ function Config($stateProvider, $urlRouterProvider) {
             name: "rdv",
             url: "/rdv",
             component: "rdv"
+        },
+        {
+            name: "logout",
+            url: "/logout",
+            component: "menuBack" // I have tried to create a component "logout", but no success :(
         }
+
     ];
+
     $urlRouterProvider.otherwise("/rdv"); // Page par défaut
     states.forEach(function (state) {
         $stateProvider.state(state);
     });
 
 };
-
-
-

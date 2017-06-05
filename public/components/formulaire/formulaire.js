@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module("reflexologie")
-    .component("home", {
-        templateUrl: "components/home/home.html",
-        controller: Home
+    .component("formulaire", {
+        templateUrl: "components/formulaire/formulaire.html",
+        controller: Formulaire
     })
-function Home($scope, $http) {
+function Formulaire($scope, $http) {
     this.idontknow = "test";
 
     $scope.addPost = function () {

@@ -1,7 +1,6 @@
 body {
-    height: 2000px;
+    height:2000px;
 }
-
 .test {
     height: 500px;
     background: grey;
@@ -28,4 +27,51 @@ body {
 .nav-item:hover {
     background-color: white;
     border-bottom: 4px solid #8BCED3;
+}
+
+/* -------- Qui Suis-Je ? --------*/
+
+.material-icons {
+    color : #80cbc4;
+}
+
+.title {
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.expand {
+    margin: auto;
+    width: 15vw;
+    transition: all 0.7s;
+    display: inline-flex;
+    height: 20vw;
+}
+
+
+#portrait {
+    margin-top : 50px;
+    margin : auto;
+    width: 15vw;
+    border: 6px solid #80cbc4;
+}
+
+.txt {
+    min-width: 40vw;
+    margin-left: -20vw;
+    opacity: 0;
+    transition: margin-left 0.5s, opacity 0.3s;
+}
+
+.quisuisje:hover .txt {
+    margin-left: 5vw;
+    opacity: 1;
+    transition: margin-left 0.5s, opacity 1s;
+}
+
+.quisuisje:hover .expand {
+    width: 80%;
 }

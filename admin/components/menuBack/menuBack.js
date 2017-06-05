@@ -6,8 +6,18 @@ angular.module("reflexologie")
         controller : Menu
     })
 
+function Menu($scope, $http) {
 
-function Menu() {
-    this.horaires= "horaires";
-    this.rdv= "rdv";
+    // this.horaires= "horaires";
+    // this.rdv= "rdv";
+
+	$scope.logout = function () {
+        return $http.get("/logout");
+    }
+
 }
+
+// function Menu() {
+//     this.horaires= "horaires";
+//     this.rdv= "rdv";
+// }
