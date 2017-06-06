@@ -8,19 +8,21 @@ angular.module("reflexologie")
 
 function Rdv($scope, $resource, $http, $sce) {
 
+    const vm = this;
     $scope.trustSrc = function (src) {
         src = "https://www.google.com/maps/embed/v1/place?key=AIzaSyATjR_53yrD5MEaLfbpsfh3NyMAIK2crxo&q=" + this.rdv.patient.adresse;
         return $sce.trustAsResourceUrl(src);
     }
-
-
-
     $scope.deleted = function () {
+
+        let i = vm.rdvs.indexOf(this.rdv);
+        vm.rdvs.splice(i, 1);
         return $http.delete("/rdv/" + this.rdv._id)
     }
     $scope.toast = function toast() {
-        Materialize.toast('Rendez-vous validé, un email est envoyé', 4000)
-
+        Materialize.toast('Rendez-vous validé, un email est envoyé', 4000);
+        let i = vm.rdvs.indexOf(this.rdv);
+        vm.rdvs[i].status = 1;
         sendmail(this.rdv);
         return $http.put('/rdv/' + this.rdv._id, {
             jour: this.rdv.jour,
@@ -40,6 +42,8 @@ function Rdv($scope, $resource, $http, $sce) {
     }
     $scope.nope = function nope() {
         Materialize.toast('Rendez-vous annulé, un email est envoyé', 4000)
+        let i = vm.rdvs.indexOf(this.rdv);
+        vm.rdvs[i].status = 2; 
         sendmailCancel(this.rdv);
         return $http.put('/rdv/' + this.rdv._id, {
             jour: this.rdv.jour,
@@ -61,10 +65,8 @@ function Rdv($scope, $resource, $http, $sce) {
     });
 
     var ListRdv = $resource('/rdv');
-    const vm = this;
     ListRdv.get().$promise.then(function (Rdv) {
         vm.rdvs = Rdv.rdv;
-        vm.infos = Rdv.rdv;
     })
     function sendmail(rdv) {
         return $http({
