@@ -5,7 +5,7 @@ const config = ["$stateProvider", "$urlRouterProvider", Config];
 
 angular
 
-    .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize"])
+    .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize", 'ui.calendar'])
 
     .config(config)
 
