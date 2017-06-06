@@ -5,7 +5,7 @@ const config = ["$stateProvider", "$urlRouterProvider", Config];
 
 angular
 
-    .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize"])
+    .module("reflexologie", ["ui.router", "ngAnimate", "ngResource", "ui.materialize", 'ui.calendar'])
 
     .config(config)
 
@@ -25,6 +25,7 @@ function Config($stateProvider, $urlRouterProvider) {
     ];
 
     $urlRouterProvider.otherwise("/rdv"); // Page par défaut
+
     states.forEach(function (state) {
         $stateProvider.state(state);
     });

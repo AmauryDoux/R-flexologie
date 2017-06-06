@@ -129,9 +129,9 @@ app.use("/rdv", router);
 //Nouveau schema
 const
     RdvJourSchema = mongoose.Schema({
-        jour: String,
-        heureStart: String,
-        heureEnd: String
+        title: String,
+        start: Date,
+        end: Date
     }),
     RdvJour = mongoose.model('RdvJour', RdvJourSchema),
     routed = express.Router();
@@ -150,9 +150,9 @@ routed
     })
     .post(function (req, res) {
         var rdv = new RdvJour();
-        rdv.jour = req.body.jour;
-        rdv.heureStart = req.body.heureStart;
-        rdv.heureEnd = req.body.heureEnd;
+        rdv.title = req.body.title,
+            rdv.start = req.body.start,
+            rdv.end = req.body.end
         rdv.save(function (err) {
             if (err) {
                 res.send(err);
@@ -176,10 +176,9 @@ routed
             if (err) {
                 res.send(err);
             }
-            rdv.jour = req.body.jour;
-            rdv.heureStart = req.body.heureStart;
-            rdv.heureEnd = req.body.heureEnd;
-
+            rdv.title = req.body.title,
+            rdv.start = req.body.start,
+            rdv.end = req.body.end
             rdv.save(function (err) {
                 if (err) {
                     res.send(err);
@@ -189,7 +188,7 @@ routed
         });
     })
     .delete(function (req, res) {
-        Rdv.remove({ _id: req.params.rdv_id }, function (err) {
+        RdvJour.remove({ _id: req.params.rdv_id }, function (err) {
             if (err) {
                 res.send(err);
             }
@@ -285,16 +284,16 @@ app.post('/sendmail', function (req, res) {
     res.send({ message: 'Rdv created' });
 
 });
-     //**********************************************//
-    //                                              //
-   //        LA PLACE POUR AUTHENTIFICATION        //
-  //          DE MASS                             //
- //                                              //
+//**********************************************//
+//                                              //
+//        LA PLACE POUR AUTHENTIFICATION        //
+//          DE MASS                             //
+//                                              //
 //**********************************************//
 
 
 
 //On finit avec un beau listen
 app.listen(port, function () {
-    console.log("Adresse du serveur : http://localhost:3000");
+    console.log("Adresse du serveur : http://localhost:" + port);
 });
