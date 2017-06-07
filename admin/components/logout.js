@@ -11,7 +11,6 @@ function Logout($scope, $resource, $http, $sce) {
 	
     $scope.logout = function () {
     	return $http.get("logout");
-    	console.log("YOU CLICK!!!");
     }
 
 }

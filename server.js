@@ -12,12 +12,21 @@ const
 
 // Utilisation de app, c'est a dire d'express
 // Important: il faut que l'ordre des middleware(s) suivants soit respecté.
+
+    port = process.env.PORT || 3000,
+    path = require('path');
+
+//Utilisation de app, c'est a dire d'express
 app
     .all('*', function (req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
     })
+
+    .use(express.static('public'))
+    .use('/admin', express.static('admin'))
+    .use('/auth', express.static('auth'))
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
     .use(express.static('public'))
@@ -141,9 +150,9 @@ app.use("/rdv", router);
 //Nouveau schema
 const
     RdvJourSchema = mongoose.Schema({
-        jour: String,
-        heureStart: String,
-        heureEnd: String
+        title: String,
+        start: Date,
+        end: Date
     }),
     RdvJour = mongoose.model('RdvJour', RdvJourSchema),
     routed = express.Router();
@@ -162,9 +171,9 @@ routed
     })
     .post(function (req, res) {
         var rdv = new RdvJour();
-        rdv.jour = req.body.jour;
-        rdv.heureStart = req.body.heureStart;
-        rdv.heureEnd = req.body.heureEnd;
+        rdv.title = req.body.title,
+            rdv.start = req.body.start,
+            rdv.end = req.body.end
         rdv.save(function (err) {
             if (err) {
                 res.send(err);
@@ -188,10 +197,9 @@ routed
             if (err) {
                 res.send(err);
             }
-            rdv.jour = req.body.jour;
-            rdv.heureStart = req.body.heureStart;
-            rdv.heureEnd = req.body.heureEnd;
-
+            rdv.title = req.body.title,
+            rdv.start = req.body.start,
+            rdv.end = req.body.end
             rdv.save(function (err) {
                 if (err) {
                     res.send(err);
@@ -201,7 +209,7 @@ routed
         });
     })
     .delete(function (req, res) {
-        Rdv.remove({ _id: req.params.rdv_id }, function (err) {
+        RdvJour.remove({ _id: req.params.rdv_id }, function (err) {
             if (err) {
                 res.send(err);
             }
@@ -297,6 +305,7 @@ app.post('/sendmail', function (req, res) {
     res.send({ message: 'Rdv created' });
 
 });
+
 //**********************************************//
 //                                              //
 //        LA PLACE POUR AUTHENTIFICATION        //
@@ -358,3 +367,4 @@ function requireLogin(req, res, next) {
 app.listen(port, function () {
     console.log("Adresse du serveur : http://localhost:" + port);
 });
+

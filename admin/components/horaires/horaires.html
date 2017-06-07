@@ -1,32 +1,23 @@
+<div role="main">
+    <div class="container">
+        <section id="directives-calendar">
 
-<div class="input-field col s12">
-    <select ng-model="selectHS">
-      <option value="" disabled selected>Sélection Heude de début</option>
-      <option value="9h00">9h00</option>
-      <option value="10h30">10h30</option>
-      <option value="14h00">14h00</option>
-      <option value="15H30">15h30</option>
-      <option value="17h00">17h00</option>
-    </select>
-    <label>Rendez-vous</label>
-</div>
+            <div class="well">
+                <div class="row-fluid">
+                    <div class="span8">
+                        <tabset>
+                            <tab select="renderCalendar('myCalendar1');">
+                                <tab-heading>
+                                </tab-heading>
 
-<div class="input-field col s12">
-    <select ng-model="selectHE">
-      <option value="" disabled selected>Sélection Heude de fin</option>
-      <option value="10h00">10h00</option>
-      <option value="11h30">11h30</option>
-      <option value="15h00">15h00</option>
-      <option value="16h30">16h30</option>
-      <option value="18h00">18h00</option>
-    </select>
-</div>
-
-
-<input class="chips chips-autocomplete" ng-model="auto">
-</input>
-
-<button>Valider</button>
-
-
-<p> Vous avez selectionner que vous êtes disponible {{auto}} de {{selectHS}} à {{selectHE}} </p>
+                                <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+                            </tab>
+                        </tabset>
+                        <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
+                            <h4>{{alertMessage}}</h4>
+                            <button ng-click="remove()">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>

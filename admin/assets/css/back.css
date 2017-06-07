@@ -19,8 +19,6 @@ html, body {
 
 .flex {
     display: flex;
-    width: 100%;
-    height: 100%;
 }
 
 .logo-nav {
@@ -97,8 +95,9 @@ html, body {
 }
 
 .fade.ng-leave.ng-leave-active {
-  opacity:0;
+    opacity: 0;
 }
+
 
 /* ----- card ----- */
 
@@ -110,24 +109,36 @@ thead {
     background: #EEEEED;
     font-weight: 500;
 }
-    opacity: 0;
-}
+
 
 
 /* ------- Authentification------- */
-
-.flex {
-    width: 100vw;
-    height: 100vh;
+.flexo {
     display: flex;
+    width: 100%;
+    height: 100%;
 }
 
+/* ----- card ----- */
+.background {
+    background: white;
+}
+thead {
+    background: #EEEEED;
+    font-weight: 500;
+}
+
+/* ------- Authentification------- */
+.flexo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
 .authForm {
     width: 100%;
     height: 100%;
     display: flex;
 }
-
 #authContainer {
     margin: auto;
     width: 50vw;
@@ -139,32 +150,26 @@ thead {
     flex-direction: column;
     align-items: center;
 }
-
 #btnConnexion {
     background-color: #8BCED3;
     margin-bottom: 15px;
 }
-
 .logoCont {
     height: 15vh;
     width: 15vw;
 }
-
 .imgAuth {
     margin: 15px 0;
     width: 30%;
 }
-
 @media only screen and (max-width: 500px) {
     .imgAuth {
         width: 70%;
         margin-bottom: 100px;
     }
+    
     #authContainer {
         border-style: none;
         width: 90vw;
     }
-
-
 }
->>>>>>> 0d7150d4a857c9a50c5eae9255d554b6841e535b
