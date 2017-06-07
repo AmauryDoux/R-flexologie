@@ -6,7 +6,6 @@ angular.module("reflexologie")
         controller: Formulaire
     })
 function Formulaire($scope, $http) {
-    this.idontknow = "test";
 
     $scope.addPost = function () {
         var data = {
@@ -36,23 +35,7 @@ function Formulaire($scope, $http) {
             data: rdv
         });
     };
-       $(document).ready(function () {
-        $('select').material_select();
-    });
+  
   
 
-  $('.chips').material_chip();
-  $('.chips-autocomplete').material_chip({
-    autocompleteOptions: {
-      data: {
-        'Lundi': null,
-        'Mardi': null,
-        'Mercredi': null,
-        'Jeudi': null, 
-        'Vendredi': null
-      },
-      limit: Infinity,
-      minLength: 1
-    }
-  });
 }
