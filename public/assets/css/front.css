@@ -43,11 +43,11 @@ nav ul a {
 }
 
 nav ul.left li {
-    padding-left: 100px;
+    padding-left: 10vw;
 }
 
 nav ul.right li {
-    padding-right: 100px;
+    padding-right: 10vw;
 }
 
 nav {
@@ -64,9 +64,9 @@ nav ul a:hover {
 
 #logo {
     display: flex;
-    width: 4em;
-    height: 4em;
-    margin-top: -0.8em;
+    width: 15vh;
+    height: 15vh;
+    margin-top: -2.5vh;
     border-radius: 50%;
     border: 6px solid #80cbc4;
     background: white;
