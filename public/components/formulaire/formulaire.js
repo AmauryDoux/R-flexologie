@@ -6,7 +6,10 @@ angular.module("reflexologie")
         controller: Formulaire
     })
 function Formulaire($scope, $http) {
-
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
     $scope.addPost = function () {
         var data = {
             jour: $scope.jour,
