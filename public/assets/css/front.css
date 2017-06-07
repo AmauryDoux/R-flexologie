@@ -6,6 +6,10 @@ html, body, .block {
     padding: 0;
 }
 
+.parallax {
+    z-index: 1;
+}
+
 /* -------- Menu --------*/
 
 .test {
@@ -32,16 +36,17 @@ nav ul li {
 }
 
 nav ul a {
-    color:black;
     transition : all 0.2s;
+    color:black;
     height: 100%;
+    border-bottom: 5px solid white;
 }
 
-nav .left {
+nav ul.left li {
     padding-left: 100px;
 }
 
-nav .right {
+nav ul.right li {
     padding-right: 100px;
 }
 
@@ -51,10 +56,10 @@ nav {
 }
 
 nav ul a:hover {
+    transition : all 0.2s;
     background-color : white;
     color: #80cbc4;
     border-bottom: 5px solid #80cbc4;
-
 }
 
 #logo {
