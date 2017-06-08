@@ -68,7 +68,6 @@ function MenuSticky($scope, $location, anchorSmoothScroll) {
             bottom: 10000
         });
     });
-
     $scope.gotoElement = function (eID) {
         // set the location.hash to the id of
         // the element you wish to scroll to.
