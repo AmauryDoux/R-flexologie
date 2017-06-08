@@ -7,10 +7,26 @@ html, body, .block {
 }
 
 .parallax {
-    z-index: 1;
+    z-index: 0;
 }
 
 /* -------- Menu --------*/
+
+@media screen and (max-width: 993px) {
+
+    nav ul li {
+        height: 10% !important;
+    }
+
+    .side-nav li>a:hover {
+        background-color: white;
+    }
+
+    #mobile-demo li:first-child {
+        margin-top: 10%; 
+    }
+  
+}
 
 .test {
     height: 90%;
@@ -70,12 +86,18 @@ nav ul a:hover {
     border-radius: 50%;
     border: 6px solid #80cbc4;
     background: white;
+    cursor: pointer;
 }
 
 #svg-logo {
     margin: auto;
     width: 2em;
     height: 2em;
+}
+
+#menu-mobile {
+    height: 0;
+    width: 0;
 }
 
 /* -------- Qui Suis-Je ? --------*/
