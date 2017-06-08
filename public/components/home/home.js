@@ -5,6 +5,5 @@ angular.module("reflexologie")
         templateUrl: "components/home/home.html",
         controller: Home
     })
-function Home() {
-    this.idontknow = "test";
+function Home($scope, $http) {
 }

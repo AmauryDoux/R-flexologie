@@ -1,0 +1,41 @@
+
+<!-- Modal Structure -->
+<div id="demoModal" class="modal">
+    <div class="row">
+        <div class="modal-content">
+            <div class="container">
+                <div class="form">
+                    <form name="PatientForm">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="userInput" type="text" ng-model="prenom" required/>
+                                <label for="userInput">Prenom</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input name="nomInput" type="text" ng-model="nom" required/>
+                                <label for="nomInput">Nom</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="email" type="email" ng-model="email" required/>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input name="tel" type="tel" ng-model="tel" required/>
+                                <label for="tel">Tel</label>
+                            </div>
+                        </div>
+                        <div id="adress" class="input-field col s12">
+                            <input name="adresse" type="text" ng-model="adresse" required/>
+                            <label for="adresse">Adresse</label>
+                        </div>
+
+                        <textarea wrap="hard" rows="10" cols="50" name="commentaire" placeholder="Ecrivez un commentaire ici"></textarea>
+
+                        <button id="btnn" ng-disabled="PatientForm.$invalid" ng-click="addPost()" class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Submit
+                    <i id="icons" class="material-icons right">send</i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
