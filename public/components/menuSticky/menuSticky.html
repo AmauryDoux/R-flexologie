@@ -12,10 +12,11 @@
         <ul class="left hide-on-med-and-down">
             <li><a class="valign-wrapper"   href="#">Mon Activité</a></li>
             <li><a class="valign-wrapper" ng-click="gotoElement('ancre-refl')">La Réflexologie</a></li>
+
         </ul>
         <ul class="right hide-on-med-and-down">
             <li><a class="valign-wrapper" ng-click="gotoElement('ancre-pres')">Qui Suis-Je ?</a></li>
-            <li><a class="valign-wrapper btn" data-target='demoModal' modal>Rendez-Vous</a></li>
+            <li><a class="valign-wrapper" data-target='demoModal' modal>Prendre Un Rendez-Vous</a></li>
         </ul>
     </div>
 </nav>
@@ -23,8 +24,10 @@
 <nav id="menu-mobile">
     <ul class="side-nav" id="mobile-demo">
         <li><a>Mon Activité</a></li>
-        <li><a>La Réflexologie</a></li>
-        <li><a>Qui Suis-Je ?</a></li>
-        <li><a>Rendez-Vous</a></li>
+        <li><a ng-click="gotoElement('ancre-reflex')">La Réflexologie</a></li>
+        <li><a ng-click="gotoElement('ancre-pres')">Qui Suis-Je ?</a></li>
+        <li><a ng-click="gotoElement('ancre-form')">Rendez-Vous</a></li>
     </ul>
 </nav>
+
+<div class="sticky"></div>
