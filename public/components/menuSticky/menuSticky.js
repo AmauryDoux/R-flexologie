@@ -60,12 +60,12 @@ angular.module("reflexologie")
     });
 
 function MenuSticky($scope, $location, anchorSmoothScroll) {
-
+    
     $(document).ready(function () {
         $(".button-collapse").sideNav();
         $('.menu').pushpin({
             top: $('.menu').offset().top,
-            bottom: 10000
+            bottom: 10000,
         });
     });
 
