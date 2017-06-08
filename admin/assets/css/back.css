@@ -19,8 +19,6 @@ html, body {
 
 .flex {
     display: flex;
-    width: 100%;
-    height: 100%;
 }
 
 .logo-nav {
@@ -110,16 +108,26 @@ thead {
     background: #EEEEED;
     font-weight: 500;
 }
-    opacity: 0;
+
+/* ----- card ----- */
+
+.background {
+    background: white;
 }
+
+thead {
+    background: #EEEEED;
+    font-weight: 500;
+}
+
 
 
 /* ------- Authentification------- */
 
-.flex {
-    width: 100vw;
-    height: 100vh;
+.flexo {
     display: flex;
+    width: 100%;
+    height: 100%;
 }
 
 .authForm {
@@ -167,4 +175,3 @@ thead {
 
 
 }
->>>>>>> 0d7150d4a857c9a50c5eae9255d554b6841e535b

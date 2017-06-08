@@ -1,2 +1,30 @@
-<!--<div class="test"></div>
-<div class="menu"></div>-->
+<div class="test parallax-container">
+        <div parallax>
+            <img src="assets/img/cover.jpg" width="100%">
+        </div> <div class="contain"><h1 class="textpar">Caroline Marques</h1></div>
+</div>          
+<nav class="menu">
+    <div class="nav-wrapper">
+        <a ng-click="gotoElement('ancre-home')" id="logo" class="brand-logo center">
+            <img id="svg-logo" src="./assets/img/logo-05.svg" alt="logo">
+        </a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+            <li><a class="valign-wrapper" href="#">Mon Activité</a></li>
+            <li><a class="valign-wrapper" href="#">La Réflexologie</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="valign-wrapper" ng-click="gotoElement('ancre-pres')">Qui Suis-Je ?</a></li>
+            <li><a class="valign-wrapper" ng-click="gotoElement('ancre-form')">Rendez-Vous</a></li>
+        </ul>
+    </div>
+</nav>
+
+<nav id="menu-mobile">
+    <ul class="side-nav" id="mobile-demo">
+        <li><a>Mon Activité</a></li>
+        <li><a>La Réflexologie</a></li>
+        <li><a>Qui Suis-Je ?</a></li>
+        <li><a>Rendez-Vous</a></li>
+    </ul>
+</nav>
