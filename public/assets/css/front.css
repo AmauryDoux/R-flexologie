@@ -91,6 +91,35 @@ nav ul a:hover {
     height: 2em;
 }
 
+/* -------- Mon Activité --------*/
+
+.actTitle {
+    margin: auto;
+    margin-top: 5%;
+}
+
+#franceAquitaine {
+    margin-top: 50px;
+    margin: auto;
+    width: 15vw;
+}
+
+.txt {
+    min-width: 40vw;
+    margin-left: -20vw;
+    opacity: 0;
+    transition: margin-left 1s, opacity 1.2s;
+}
+
+.monactivite:hover .txt {
+    margin-left: 5vw;
+    opacity: 1;
+    transition: margin-left 1s, opacity 1.2s;
+}
+
+.monactivite:hover .expand {
+    width: 80%;
+}
 
 /* -------- Qui Suis-Je ? --------*/
 
