@@ -1,4 +1,6 @@
-html, body, .block {
+html,
+body,
+.block {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -27,19 +29,15 @@ html, body, .block {
 /* -------- Menu --------*/
 
 @media screen and (max-width: 993px) {
-
     nav ul li {
         height: 10% !important;
     }
-
     .side-nav li>a:hover {
         background-color: white;
     }
-
     #mobile-demo li:first-child {
-        margin-top: 10%; 
+        margin-top: 10%;
     }
-  
 }
 
 .test {
@@ -206,7 +204,33 @@ nav ul a:hover {
 <<<<<<< HEAD
 }
 
-    
-=======
+.modal-content,
+demoModal {
+    background-color: white;
+    width: 100%;
+    justify-content: space-around;
+    overflow: none;
 }
->>>>>>> e8286b50d3ba9f9592b332bcab51ed67c42e62a2
+
+#adress {
+    margin-bottom: 30px;
+    padding: 0px;
+}
+
+.adresse {
+    margin-bottom: 30px;
+}
+
+textarea {
+    margin-bottom: 20px;
+    resize: none;
+}
+
+#btnn {
+    margin-top: 20px;
+    background-color: #80cbc4;
+}
+
+#icons {
+    color: white;
+}
