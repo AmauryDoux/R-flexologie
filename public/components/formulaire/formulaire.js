@@ -16,9 +16,14 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
     $scope.events = []
     /* event source that contains custom events on the scope */
     $resource("/rdvjour").get().$promise.then(function (R) {
-        console.log($scope.events)
         for (var i = 0; i < R.rdv.length; i++) {
-            $scope.events.push(R.rdv[i])
+            if (new Date(R.rdv[i].start).getTime() < new Date().getTime()) {
+                $http.delete("/rdvjour/" + R.rdv[i]._id).then(function (r) { })
+            }
+            else {
+                $scope.events.push(R.rdv[i])
+            }
+
         }
 
     })
@@ -52,8 +57,36 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
             $http.delete("/rdvjour/" + date._id)
 
         };
-        $scope.alertMessage = ((new Date(date.start).getDate()) + ' ' + (new Date(date.start).getMonth() + 1) + ' ' + (new Date(date.start).getHours() - 2) + ' ' + (new Date(date.start).getMinutes()) + ' ' + (new Date(date.end).getHours() - 2) + ' ' + (new Date(date.end).getMinutes()) + ' was clicked ');
-    };
+        $scope.alertMessage = {
+            id: date._id,
+            start: date.start,
+            end: date.end
+        };
+        if (date.start._d.getMinutes() < 10) {
+            var minutesT = "0" + date.start._d.getMinutes()
+        }
+        else {
+            var minutesT = date.start._d.getMinutes()
+        }
+        if (date.end._d.getMinutes() < 10) {
+            var minuteseT = "0" + date.end._d.getMinutes()
+        }
+        else {
+            minuteseT = date.end._d.getMinutes()
+        }
+        var tab = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"]
+        $scope.message = {
+            annee: date.start._d.getFullYear(),
+            jour: date.start._d.getDate(),
+            mois: tab[date.start._d.getMonth()],
+            heureStart: date.start._d.getHours() - 2,
+            minuteStart: minutesT,
+            heureEnd: date.end._d.getHours() - 2,
+            minuteEnd: minuteseT
+
+        }
+        Materialize.toast('Rendez vous Selectionner le ' + $scope.message.jour + " " + $scope.message.mois + " " + $scope.message.annee + " de " + $scope.message.heureStart + ":" + $scope.message.minuteStart + " à " + $scope.message.heureEnd + ":" + $scope.message.minuteEnd, 4000)
+    }
     /* alert on Drop */
     $scope.alertOnDrop = function (date, event, delta, revertFunc, jsEvent, ui, view) {
         let puting = {
@@ -101,7 +134,7 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
         });
     };
     /* Render Tooltip */
-  
+
     $scope.eventRender = function (event, element, view) {
         element.attr({
             'tooltip': event.title,
@@ -109,7 +142,7 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
         });
         $compile(element)($scope);
     };
-   
+
     const vm = $scope
     /* config object */
     $scope.uiConfig = {
@@ -120,9 +153,10 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
             minTime: '09:00:00',
             maxTime: '19:00:00',
             lang: 'fr',
-            height: 600,
-            selectable: true,
-            selectHelper: true,
+            height: 640,
+            selectable: false,
+            selectHelper: false,
+            aspectRatio: 6,
             select: function (start, end) {
                 var data = {
                     title: "rendez-vous libre",
@@ -131,7 +165,13 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
                 }
                 $resource("/rdvjour").get().$promise.then(function (T) {
                     for (var i = 0; i < T.rdv.length; i++) {
-                        vm.events.push(T.rdv[i])
+                        if (T.rdv[i].start.getTime() > new Date().getTime()) {
+                            $http.delete("/rdvjour/" + $scope.alertMessage.id).then(function (r) { })
+                        }
+                        else {
+                            vm.events.push(T.rdv[i])
+                        }
+
                     }
                 })
             },
@@ -157,9 +197,9 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
     });
     $scope.addPost = function () {
         var data = {
-            jour: $scope.jour,
-            heureStart: $scope.heureStart,
-            heureEnd: $scope.heureEnd,
+            jour: $scope.alertMessage.start,
+            heureStart: $scope.alertMessage.start,
+            heureEnd: $scope.alertMessage.end,
             patient: {
                 nom: $scope.nom,
                 prenom: $scope.prenom,
@@ -171,9 +211,20 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
             status: 0
 
         }
-
+        $scope.multi = true
         sendmail(data);
-        return $http.post("/rdv", data);
+        $http.post("/rdv", data).then(function (s) { });
+        var searchTerm = $scope.alertMessage.id,
+            index = -1;
+        for (var i = 0, len = this.events.length; i < len; i++) {
+            if (this.events[i]._id === searchTerm) {
+                index = i;
+                break;
+            }
+        }
+        $scope.events.splice(index, 1);
+        $http.delete("/rdvjour/" + $scope.alertMessage.id).then(function (r) { })
+        Materialize.toast('Un email vous à été envoyé', 4000) //
     }
     function sendmail(rdv) {
         return $http({
@@ -184,6 +235,6 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
         });
     };
 
-
+    $scope.multi = false
 
 }
