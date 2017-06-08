@@ -1,11 +1,10 @@
-
 <!-- Modal Structure -->
 <div id="demoModal" class="modal">
     <div class="row">
         <div class="modal-content">
             <div class="container">
-                <div class="form">
-                    <form name="PatientForm">
+                <form name="PatientForm">
+                    <div class="form">
                         <div class="row">
                             <div class="input-field col s6">
                                 <input name="userInput" type="text" ng-model="prenom" required/>
@@ -32,10 +31,32 @@
                         </div>
 
                         <textarea wrap="hard" rows="10" cols="50" name="commentaire" placeholder="Ecrivez un commentaire ici"></textarea>
-
-                        <button id="btnn" ng-disabled="PatientForm.$invalid" ng-click="addPost()" class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Submit
-                    <i id="icons" class="material-icons right">send</i></button>
-                    </form>
-                </div>
+                        <div role="main">
+                            <div class="container">
+                                <section id="directives-calendar">
+                                    <div class="well">
+                                        <div class="row-fluid">
+                                            <div class="span8">
+                                                <tabset>
+                                                    <tab select="renderCalendar('myCalendar1');">
+                                                        <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+                                                    </tab>
+                                                </tabset>
+                                                <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
+                                                    <h4>{{alertMessage}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <button id="btnn" ng-disabled="PatientForm.$invalid" ng-click="addPost()" class="modal-action modal-close waves-effect waves-green btn-flat"
+                            type="submit" name="action">Submit
+                             <i id="icons" class="material-icons right">send</i></button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+</div>
