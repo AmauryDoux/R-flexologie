@@ -7,8 +7,7 @@ const
     nodemailer = require('nodemailer'),
     mongoose = require('mongoose'),
     session = require('express-session'),
-    port = process.env.PORT || 3000,
-    path = require('path');
+
 
 // Utilisation de app, c'est a dire d'express
 // Important: il faut que l'ordre des middleware(s) suivants soit respecté.
