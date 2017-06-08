@@ -3,6 +3,7 @@ html, body, .block {
     height: 100%;
     margin: 0;
     padding: 0;
+    background: repeat center/100% url("../img/background-05.svg") ;
 }
 
 .parallax {
