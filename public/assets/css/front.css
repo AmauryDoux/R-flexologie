@@ -26,6 +26,7 @@ body,
 }
 
 
+
 /* -------- Menu --------*/
 
 @media screen and (max-width: 993px) {
@@ -201,7 +202,9 @@ nav ul a:hover {
 
 .rowReflex {
     margin-top: 5%;
-<<<<<<< HEAD
+}
+.taille{
+    width: 97% !important;
 }
 
 .modal-content,

@@ -20,9 +20,14 @@ function Horaires($scope, $compile, $timeout, uiCalendarConfig, $http, $resource
   $scope.events = []
   /* event source that contains custom events on the scope */
   $resource("/rdvjour").get().$promise.then(function (R) {
-    console.log($scope.events)
     for (var i = 0; i < R.rdv.length; i++) {
-      $scope.events.push(R.rdv[i])
+      if (new Date(R.rdv[i].start).getTime() < new Date().getTime()) {
+        $http.delete("/rdvjour/" + R.rdv[i]._id).then(function (r) { })
+      }
+      else {
+        $scope.events.push(R.rdv[i])
+      }
+
     }
 
   })
@@ -138,7 +143,7 @@ function Horaires($scope, $compile, $timeout, uiCalendarConfig, $http, $resource
           for (var i = 0; i < T.rdv.length; i++) {
             vm.events.push(T.rdv[i])
           }
-          })
+        })
       },
       editable: true,
       header: {
