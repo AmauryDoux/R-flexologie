@@ -1,60 +1,67 @@
 <!-- Modal Structure -->
-<div class="flex">
-    <h3 class="title  valign-wrapper"> <i class="medium material-icons">contacts</i> Prendre un rendez vous</h3>
-</div>
-<div class="row">
-    <div class="container taille">
-        <form name="PatientForm">
-            <div class="form">
-                <div class="row ">
-                    <div class="input-field col s4">
-                        <input name="userInput" type="text" ng-model="prenom" required/>
-                        <label for="userInput">Prenom</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <input name="nomInput" type="text" ng-model="nom" required/>
-                        <label for="nomInput">Nom</label>
-                    </div>
-                    <div role="main" class="col s4 right">
-                        <div class="container">
-                            <section id="directives-calendar">
-                                <div class="well">
-                                    <div class="row-fluid">
-                                        <div class="span8">
-                                            <tabset tab reload="allTabContentLoaded">
-                                                <tab select="renderCalendar('myCalendar1');">
-                                                    <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
-                                                </tab>
-                                            </tabset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="input-field col s4 left">
-                        <input name="email" type="email" ng-model="email" required/>
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="input-field col s4 left">
-                        <input name="tel" type="tel" ng-model="tel" required/>
-                        <label for="tel">Tel</label>
-                    </div>
-                    <div id="adress" class="input-field col s8 left">
-                        <input name="adresse" type="text" ng-model="adresse" required/>
-                        <label for="adresse">Adresse</label>
-                    </div>
-                    <div class="input-field col s8 left">
-                        <div ng-show="alertMessage != undefined && alertMessage != ''">
-                            <input type="text" value="Le {{message.jour}}/{{message.mois}}/{{message.annee}} de {{message.heureStart}}:{{message.minuteStart}} à {{message.heureEnd}}:{{message.minuteEnd}}" required readonly>
-                        </div>
-                    </div>
 
-                    <textarea class="col s8 left" wrap="hard" rows="10" cols="50" name="commentaire" placeholder="Ecrivez un commentaire ici"></textarea>
-                    <button id="btnn" ng-disabled="PatientForm.$invalid || multi" ng-click="addPost()" class="modal-action modal-close waves-effect waves-green btn-flat"
-                        type="submit" name="action">Submit
-                             <i id="icons" class="material-icons right">send</i></button>
-                </div>
-        </form>
+
+<div id="Modal" class="modal">
+    <div class="modal-content">
+        <div class="flex">
+            <h3 class="title  valign-wrapper"> <i class="medium material-icons">contacts</i> Prendre un rendez vous</h3>
         </div>
-    </div>
+        <div class="row">
+            <div class="container taille">
+                <form name="PatientForm">
+                    <div class="form">
+                        <div class="row">
+                            <div class="input-field col s4">
+                                <input name="userInput" type="text" ng-model="prenom" required/>
+                                <label for="userInput">Prenom</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <input name="nomInput" type="text" ng-model="nom" required/>
+                                <label for="nomInput">Nom</label>
+                            </div>
+                            <div role="main" class="col s4 right">
+                                <div class="container">
+                                    <section id="directives-calendar">
+                                        <div class="well">
+                                            <div class="row-fluid">
+                                                <div class="span8">
+                                                    <tabset tab reload="allTabContentLoaded">
+                                                        <tab select="renderCalendar('myCalendar1');">
+                                                            <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+                                                        </tab>
+                                                    </tabset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="input-field col s4 left">
+                                <input name="email" type="email" ng-model="email" required/>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s4 left">
+                                <input name="tel" type="tel" ng-model="tel" required/>
+                                <label for="tel">Tel</label>
+                            </div>
+                            <div id="adress" class="input-field col s8 left">
+                                <input name="adresse" type="text" ng-model="adresse" required/>
+                                <label for="adresse">Adresse</label>
+                            </div>
+                            <div class="input-field col s8 left">
+                                <div ng-show="alertMessage != undefined && alertMessage != ''">
+                                    <input type="text" value="Le {{message.jour}}/{{message.mois}}/{{message.annee}} de {{message.heureStart}}:{{message.minuteStart}} à {{message.heureEnd}}:{{message.minuteEnd}}"
+                                        required readonly>
+                                </div>
+                            </div>
+
+                            <textarea class="col s8 left" wrap="hard" rows="10" cols="50" name="commentaire" placeholder="Ecrivez un commentaire ici"></textarea>
+                            <button id="btnn" ng-disabled="PatientForm.$invalid || multi" ng-click="addPost()" class="modal-action modal-close waves-effect waves-green btn-flat"
+                                type="submit" name="action">Submit
+                             <i id="icons" class="material-icons right">send</i></button>
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
+</div>

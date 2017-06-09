@@ -191,6 +191,9 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
 
     /* event sources array*/
     $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
+    $('#Modal').on('shown.bs.modal', function () {
+        $("#calendar").fullCalendar('render');
+    });
     $(document).ready(function () {
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
