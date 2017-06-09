@@ -1,23 +1,29 @@
 <div class="test parallax-container">
-        <div parallax>
-            <img src="assets/img/cover.jpg" width="100%">
-        </div> <div class="contain"><h1 class="textpar">La Réflexologie à domicile<br>Réflex' Eudoxie
-</h1></div>
-</div>          
+    <div parallax>
+        <img src="assets/img/cover.jpg" width="100%">
+    </div>
+    <div class="contain">
+        <h1 class="textpar">Réflex' Eudoxie<br><span class="sstitre">La Réflexologie à domicile</span>
+        </h1>
+    </div>
+</div>
 <nav class="menu">
-    <div class="nav-wrapper">
+    <div class="nav-wrapper row">
         <a ng-click="gotoElement('ancre-home')" id="logo" class="brand-logo center">
             <img id="svg-logo" src="./assets/img/logo-05.svg" alt="logo">
         </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="left hide-on-med-and-down">
-            <li><a class="valign-wrapper" ng-click="gotoElement('ancre-act')">Mon Activité</a></li>
-            <li><a class="valign-wrapper" ng-click="gotoElement('ancre-refl')">La Réflexologie</a></li>
-
+        <ul class="col s6 hide-on-med-and-down">
+            <div class="row rowMenu">
+                <li class="col offset-s2 s3 flex"><a class="valign-wrapper" ng-click="gotoElement('ancre-act')">Mon Activité</a></li>
+                <li class="col offset-s2 s3 flex"><a class="valign-wrapper" ng-click="gotoElement('ancre-refl')">La Réflexologie</a></li>
+            </div>
         </ul>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="valign-wrapper" ng-click="gotoElement('ancre-pres')">Qui Suis-Je ?</a></li>
-            <li><a class="valign-wrapper"  data-target='Modal' modal>Prendre Un Rendez-Vous</a></li>
+        <ul class="col s6 hide-on-med-and-down">
+            <div class="row rowMenu">
+                <li class="col offset-s2 s3 flex"><a class="valign-wrapper" ng-click="gotoElement('ancre-pres')">Qui Suis-Je ?</a></li>
+                <li class="col offset-s2 s3 flex"><a class="valign-wrapper" data-target='Modal' modal>Prendre Un Rendez-Vous</a></li>
+            </div>
         </ul>
     </div>
 </nav>

@@ -25,13 +25,18 @@ body,
     margin: auto;
     text-shadow: 0 0 10px #999999;
     text-align: center;
+    line-height: 45px;
 }
 
+.sstitre {
+    font-size: 40px;
+    font-weight: 200;
+}
 
 
 /* -------- Menu --------*/
 
-@media screen and (max-width: 993px) {
+@media screen and (max-width: 1030px) {
     nav ul li {
         height: 10% !important;
     }
@@ -84,6 +89,13 @@ nav ul.right li {
 nav {
     background: white;
     z-index: 10;
+    line-height: 20px;
+    text-align: center;
+}
+
+.rowMenu {
+    height: 100%;
+    margin-bottom: 0;
 }
 
 nav ul a:hover {
@@ -269,4 +281,18 @@ textarea {
 
 #icons {
     color: white;
+}
+
+/*-----------footer----------------*/
+
+.footercontainer {
+    margin-top: 10%;
+    border-top: 2px solid  #80cbc4;
+    background: white;
+    display: flex;
+}
+
+.footertxt {
+    margin: auto;
+    text-align: center;
 }
