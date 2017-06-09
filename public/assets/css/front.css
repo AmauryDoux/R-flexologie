@@ -23,6 +23,7 @@ body,
 .textpar {
     color: white;
     margin: auto;
+    text-shadow: 0 0 10px #999999;
     text-align: center;
 }
 
@@ -114,6 +115,34 @@ nav ul a:hover {
     width: 0;
 }
 
+/* -------- Mon Activité --------*/
+
+#franceAquitaine {
+    margin-top: 50px;
+    margin: auto;
+    width: 15vw;
+}
+
+.height-block {
+    height: 20vw;
+}
+
+/*.txt {
+    min-width: 40vw;
+    margin-left: -20vw;
+    opacity: 0;
+    transition: margin-left 1s, opacity 1.2s;
+}
+
+.monactivite:hover .txt {
+    margin-left: 5vw;
+    opacity: 1;
+    transition: margin-left 1s, opacity 1.2s;
+}
+
+.monactivite:hover .expand {
+    width: 80%;
+}*/
 
 /* -------- Qui Suis-Je ? --------*/
 
@@ -123,6 +152,7 @@ nav ul a:hover {
 
 .title {
     margin: auto;
+    margin-top: 10%;
 }
 
 .flex {
@@ -171,6 +201,7 @@ nav ul a:hover {
     border-radius: 10px;
     color: white;
     padding: 2% !important;
+    margin-top: 10%;
 }
 
 .imgcontainer {
@@ -180,6 +211,7 @@ nav ul a:hover {
     background-color: #A3D8DC;
     overflow: hidden;
     padding: 2% !important;
+    margin-top: 10%;
 }
 
 .containimg {

@@ -1,8 +1,12 @@
 <div class="test parallax-container">
         <div parallax>
             <img src="assets/img/cover.jpg" width="100%">
+<<<<<<< HEAD
         </div> <div class="contain"><h1 class="textpar">La Réflexologie à domicile<br>Réflex' Eudoxie
 </h1></div>
+=======
+        </div> <div class="contain"><h1 class="textpar">La Réflexologie à domicile<br>Réflex'Eudoxie</h1></div>
+>>>>>>> 9059f898ee20249b902fb013256e608c4188e173
 </div>          
 <nav class="menu">
     <div class="nav-wrapper">
@@ -11,7 +15,7 @@
         </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
-            <li><a class="valign-wrapper"   href="#">Mon Activité</a></li>
+            <li><a class="valign-wrapper" ng-click="gotoElement('ancre-act')">Mon Activité</a></li>
             <li><a class="valign-wrapper" ng-click="gotoElement('ancre-refl')">La Réflexologie</a></li>
 
         </ul>
@@ -24,7 +28,7 @@
 
 <nav id="menu-mobile">
     <ul class="side-nav" id="mobile-demo">
-        <li><a>Mon Activité</a></li>
+        <li><a ng-click="gotoElement('ancre-act')">Mon Activité</a></li>
         <li><a ng-click="gotoElement('ancre-reflex')">La Réflexologie</a></li>
         <li><a ng-click="gotoElement('ancre-pres')">Qui Suis-Je ?</a></li>
         <li><a data-target='demoModal' modal>Rendez-Vous</a></li>
