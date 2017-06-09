@@ -59,8 +59,8 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
         };
         $scope.alertMessage = {
             id: date._id,
-            start: date.start,
-            end: date.end
+            start: date.start._d,
+            end: date.end._d
         };
         if (date.start._d.getMinutes() < 10) {
             var minutesT = "0" + date.start._d.getMinutes()
@@ -199,10 +199,28 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
         $('.modal').modal();
     });
     $scope.addPost = function () {
+        console.log($scope.alertMessage.start.getMonth())
+        var tab = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"]
+        var Start = $scope.alertMessage.start.getDate() + " " + tab[$scope.alertMessage.start.getMonth()];
+        if ($scope.alertMessage.start.getMinutes() < 10){
+            var minutesS = $scope.alertMessage.start.getMinutes() + "0"
+        }
+        else {
+            var minutesS = $scope.alertMessage.start.getMinutes();
+        }
+        if ($scope.alertMessage.end.getMinutes() < 10){
+            var minuteEnd = $scope.alertMessage.end.getMinutes() + "0"
+        }
+        else{
+            var minuteEnd = $scope.alertMessage.end.getMinutes()
+        }
+        var heureStart = $scope.alertMessage.start.getHours() - 2 + " : " + minutesS
+        var heureEnd = $scope.alertMessage.end.getHours() - 2 + " : " + minuteEnd
+
         var data = {
-            jour: $scope.alertMessage.start,
-            heureStart: $scope.alertMessage.start,
-            heureEnd: $scope.alertMessage.end,
+            jour: Start,
+            heureStart: heureStart,
+            heureEnd: heureEnd,
             patient: {
                 nom: $scope.nom,
                 prenom: $scope.prenom,

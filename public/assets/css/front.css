@@ -270,3 +270,17 @@ textarea {
 #icons {
     color: white;
 }
+
+/*-----------footer----------------*/
+
+.footercontainer {
+    margin-top: 10%;
+    border-top: 2px solid  #80cbc4;
+    background: white;
+    display: flex;
+}
+
+.footertxt {
+    margin: auto;
+    text-align: center;
+}
