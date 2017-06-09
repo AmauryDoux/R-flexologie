@@ -7,7 +7,12 @@ angular.module("reflexologie")
     })
 
 
-function Menu() {
+function Menu($scope, $http, $window) {
     this.horaires= "horaires";
     this.rdv= "rdv";
+
+    $scope.logout = function(){
+        $http.get("/logout").then(function(S){});
+        $window.location.reload();
+    }
 }
