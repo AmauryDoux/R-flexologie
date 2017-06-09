@@ -6,6 +6,17 @@ angular.module("reflexologie")
         controller: Formulaire
     })
 function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resource) {
+    $scope.toto = false;
+    $scope.coco = function () {
+        if ($scope.toto == true) {
+            $scope.toto = false;
+
+        }
+        else {
+            $scope.toto = true  ;
+
+        }
+    }
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -43,7 +54,6 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
 
     /* alert on eventClick */
     $scope.alertOnEventClick = function (date, jsEvent, view, event) {
-        console.log(jsEvent)
         $scope.remove = function () {
             var searchTerm = date._id,
                 index = -1;
@@ -54,7 +64,7 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
                 }
             }
             $scope.events.splice(index, 1);
-            $http.delete("/rdvjour/" + date._id)
+            $http.delete("/rdvjour/" + date._id).then(function (S) { })
 
         };
         $scope.alertMessage = {
@@ -179,7 +189,8 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
             header: {
                 left: 'title',
                 center: '',
-                right: 'today prev,next'
+                right: 'today prev,next',
+                list: ""
             },
             eventClick: $scope.alertOnEventClick,
             eventDrop: $scope.alertOnDrop,
@@ -191,6 +202,7 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
 
     /* event sources array*/
     $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
+
     $('#Modal').on('shown.bs.modal', function () {
         $("#calendar").fullCalendar('render');
     });
@@ -202,16 +214,16 @@ function Formulaire($scope, $http, $compile, $timeout, uiCalendarConfig, $resour
         console.log($scope.alertMessage.start.getMonth())
         var tab = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"]
         var Start = $scope.alertMessage.start.getDate() + " " + tab[$scope.alertMessage.start.getMonth()];
-        if ($scope.alertMessage.start.getMinutes() < 10){
+        if ($scope.alertMessage.start.getMinutes() < 10) {
             var minutesS = $scope.alertMessage.start.getMinutes() + "0"
         }
         else {
             var minutesS = $scope.alertMessage.start.getMinutes();
         }
-        if ($scope.alertMessage.end.getMinutes() < 10){
+        if ($scope.alertMessage.end.getMinutes() < 10) {
             var minuteEnd = $scope.alertMessage.end.getMinutes() + "0"
         }
-        else{
+        else {
             var minuteEnd = $scope.alertMessage.end.getMinutes()
         }
         var heureStart = $scope.alertMessage.start.getHours() - 2 + " : " + minutesS

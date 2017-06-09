@@ -47,7 +47,6 @@ function Horaires($scope, $compile, $timeout, uiCalendarConfig, $http, $resource
 
   /* alert on eventClick */
   $scope.alertOnEventClick = function (date, jsEvent, view, event) {
-    console.log(jsEvent)
     $scope.remove = function () {
       var searchTerm = date._id,
         index = -1;
