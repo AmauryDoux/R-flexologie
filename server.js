@@ -141,9 +141,9 @@ app.use("/rdv", router);
 //Nouveau schema
 const
     RdvJourSchema = mongoose.Schema({
-        jour: String,
-        heureStart: String,
-        heureEnd: String
+        title: String,
+        start: Date,
+        end: Date
     }),
     RdvJour = mongoose.model('RdvJour', RdvJourSchema),
     routed = express.Router();
@@ -162,9 +162,9 @@ routed
     })
     .post(function (req, res) {
         var rdv = new RdvJour();
-        rdv.jour = req.body.jour;
-        rdv.heureStart = req.body.heureStart;
-        rdv.heureEnd = req.body.heureEnd;
+        rdv.title = req.body.title;
+        rdv.start = req.body.start;
+        rdv.end = req.body.end;
         rdv.save(function (err) {
             if (err) {
                 res.send(err);
@@ -188,9 +188,9 @@ routed
             if (err) {
                 res.send(err);
             }
-            rdv.jour = req.body.jour;
-            rdv.heureStart = req.body.heureStart;
-            rdv.heureEnd = req.body.heureEnd;
+            rdv.title = req.body.title;
+            rdv.start = req.body.start;
+            rdv.end = req.body.end;
 
             rdv.save(function (err) {
                 if (err) {
