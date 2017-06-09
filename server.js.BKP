@@ -321,19 +321,22 @@ app.post('/auth', function(req, res) {
             req.session.authenticated = true;
 		}
 	} else {
-		console.log("User name and/or password undefined or incorrect");
+		// console.log("User name and/or password undefined or incorrect");
+		res.send('<script> alert("Nom d\'utilisateur et/ou Mot de passe incorrect(s)") </script>');
 	}
 
     res.redirect('/redirects');
 });
 
-app.get('/redirects', function(req, res) {
+app.get('/redirects', function(req, res, next) {
     if (req.session.authenticated) {
     	console.log('You are in!');
         res.redirect('/admin');
     } else {
         // res.end('Who are you?!');
-	res.send('<script> alert("Nom d\'utilisateur et/ou Mot de passe incorrect(s).") </script>');
+		// res.send('<script> alert("Nom d\'utilisateur et/ou Mot de passe incorrect(s)") </script>');
+		next();
+		// res.redirect('/auth');
     }
 });
 

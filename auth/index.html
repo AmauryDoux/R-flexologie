@@ -4,38 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../admin/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../admin/assets/css/back.css">
+    <link rel="stylesheet" href="../assets/css/back.css">
     <title>Auth</title>
 </head>
 <body>
-    <div class="flexo">
+    <div class="flex">
         <div id="authContainer">
-            <img class="imgAuth center-align" src="../admin/assets/img/logo-05.svg" alt="logo">
-            <form class="authForm">
+            <img class="imgAuth center-align" src="../assets/img/logo-05.svg" alt="logo">
+
+            <form class="authForm" action="../auth" method="post">
+
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="userInput" type="text" class="validate">
+                        <input name="uname" id="userInput" type="text" class="validate">
                         <label for="userInput">Nom d'utilisateur</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="pwdInput" type="password" class="validate">
+                        <input name="psw" id="pwdInput" type="password" class="validate">
                         <label for="pwdInput">Password</label>
                     </div>
+                    <div class="center-align">
+                        <button id="btnConnexion" class="btn waves-effect waves-light" type="submit">
+                            Connexion <i class="material-icons right">send</i>
+                        </button>
+                        <!-- <a href='/admin' <button id="btnConnexion" class="btn waves-effect waves-light" type="submit" name="action">    Connexion
+                            <i class="material-icons right">send</i> </button>
+                        </a> -->
+                    </div>
+                <div class="center-align">
+                    <a href="#" id="motPassOub"> Mot de passe oublié?</a>
+                </div>
 
-                    <div class="center-align">
-                        <a href='/admin'<button id="btnConnexion" class="btn waves-effect waves-light " type="submit" name="action">Connexion
-                       <i class="material-icons right">send</i>
-                   </button></a>
-                    </div>
-                    <div class="center-align">
-                        <a href="#" id="motPassOub"> Mot de passe oublié?</a>
-                    </div>
             </form>
-            </div>
+
+        </div>
     </div>
-    <script src="../admin/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../admin/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
 </body>
 </html>
