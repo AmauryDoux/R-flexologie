@@ -19,23 +19,6 @@
                                 <input name="nomInput" type="text" ng-model="nom" required/>
                                 <label for="nomInput">Nom</label>
                             </div>
-                            <div role="main" class="col s4 right">
-                                <div class="container">
-                                    <section id="directives-calendar">
-                                        <div class="well">
-                                            <div class="row-fluid">
-                                                <div class="span8">
-                                                    <tabset tab reload="allTabContentLoaded">
-                                                        <tab select="renderCalendar('myCalendar1');">
-                                                            <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
-                                                        </tab>
-                                                    </tabset>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </div>
                             <div class="input-field col s4 left">
                                 <input name="email" type="email" ng-model="email" required/>
                                 <label for="email">Email</label>
@@ -54,7 +37,26 @@
                                         required readonly>
                                 </div>
                             </div>
-
+                            <!--<div>
+                                <h4>Selectionner un rendez-vous</h4>
+                            </div>-->
+                            <div role="main">
+                                <div class="container">
+                                    <section id="directives-calendar">
+                                        <div class="well">
+                                            <div class="row-fluid">
+                                                <div class="span8">
+                                                    <tabset tab reload="allTabContentLoaded">
+                                                        <tab select="renderCalendar('myCalendar1');">
+                                                            <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+                                                        </tab>
+                                                    </tabset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
                             <textarea class="col s8 left" wrap="hard" rows="10" cols="50" name="commentaire" placeholder="Ecrivez un commentaire ici"></textarea>
                             <button id="btnn" ng-disabled="PatientForm.$invalid || multi" ng-click="addPost()" class="modal-action modal-close waves-effect waves-green btn-flat"
                                 type="submit" name="action">Submit
@@ -63,5 +65,5 @@
                 </form>
                 </div>
             </div>
-        </div>
+            </div>
 </div>
