@@ -6,4 +6,4 @@ angular.module("reflexologie")
         controller: Home
     })
 function Home($scope, $http) {
-}
+    }
