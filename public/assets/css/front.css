@@ -275,5 +275,12 @@ textarea {
 
 .footercontainer {
     margin-top: 10%;
-    border-top: grey;
+    border-top: 2px solid  #80cbc4;
+    background: white;
+    display: flex;
+}
+
+.footertxt {
+    margin: auto;
+    text-align: center;
 }
