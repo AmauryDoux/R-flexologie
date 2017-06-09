@@ -23,6 +23,8 @@ body,
 .textpar {
     color: white;
     margin: auto;
+    text-shadow: 0 0 10px #999999;
+    text-align: center;
 }
 
 
