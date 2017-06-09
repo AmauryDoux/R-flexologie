@@ -6,21 +6,33 @@ const
     bodyParser = require('body-parser'),
     nodemailer = require('nodemailer'),
     mongoose = require('mongoose'),
+    session = require('express-session'),
     port = process.env.PORT || 3000,
     path = require('path');
 
-//Utilisation de app, c'est a dire d'express
+// Utilisation de app, c'est a dire d'express
+// Important: il faut que l'ordre des middleware(s) suivants soit respecté.
 app
     .all('*', function (req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
     })
-    .use(express.static('public'))
-    .use('/admin', express.static('admin'))
-    .use('/auth', express.static('auth'))
     .use(bodyParser.urlencoded({ extended: true }))
-    .use(bodyParser.json());
+    .use(bodyParser.json())
+    .use(express.static('public'))
+    // .use('/admin', express.static('admin'))
+    .use('/auth', express.static('auth'))
+    .use(session({
+        secret: 'TheAliensAreAmongUs', // secret word to create the hash
+        resave: false, // If true, it forces the session to be saved back to the session store
+        saveUninitialized: false // If true, it forces a session that is "uninitialized" to be saved to the store
+    }))
+    .all("/admin/*", requireLogin, function (req, res, next) {
+        next(); // if the middleware requireLogin allowed us to get here,
+        // just move on to the next route handler
+    })
+    .use('/admin', express.static('admin'));
 
 //On se connect à mongodb
 mongoose.connect('mongodb://localhost/bdd');
@@ -129,9 +141,9 @@ app.use("/rdv", router);
 //Nouveau schema
 const
     RdvJourSchema = mongoose.Schema({
-        title: String,
-        start: Date,
-        end: Date
+        jour: String,
+        heureStart: String,
+        heureEnd: String
     }),
     RdvJour = mongoose.model('RdvJour', RdvJourSchema),
     routed = express.Router();
@@ -150,9 +162,9 @@ routed
     })
     .post(function (req, res) {
         var rdv = new RdvJour();
-        rdv.title = req.body.title,
-            rdv.start = req.body.start,
-            rdv.end = req.body.end
+        rdv.jour = req.body.jour;
+        rdv.heureStart = req.body.heureStart;
+        rdv.heureEnd = req.body.heureEnd;
         rdv.save(function (err) {
             if (err) {
                 res.send(err);
@@ -176,9 +188,10 @@ routed
             if (err) {
                 res.send(err);
             }
-            rdv.title = req.body.title,
-            rdv.start = req.body.start,
-            rdv.end = req.body.end
+            rdv.jour = req.body.jour;
+            rdv.heureStart = req.body.heureStart;
+            rdv.heureEnd = req.body.heureEnd;
+
             rdv.save(function (err) {
                 if (err) {
                     res.send(err);
@@ -188,7 +201,7 @@ routed
         });
     })
     .delete(function (req, res) {
-        RdvJour.remove({ _id: req.params.rdv_id }, function (err) {
+        Rdv.remove({ _id: req.params.rdv_id }, function (err) {
             if (err) {
                 res.send(err);
             }
@@ -291,7 +304,57 @@ app.post('/sendmail', function (req, res) {
 //                                              //
 //**********************************************//
 
+// Just temporarly we are going to utilise the module *express-session* .
+// But, since this might be dangerous, we will use PASSPORT.
+// var mySession = {};
 
+app.get('/auth', function (req, res) {
+    // console.log(__dirname);
+    res.sendFile(path.join(__dirname + '/auth/index.html'));
+});
+
+app.post('/auth', function (req, res) {
+    if (req.body.uname && req.body.psw) {
+        console.log("pair of values received!");
+        if (req.body.uname === 'Ernesto' && req.body.psw === 'Guevara') {
+            req.session.authenticated = true;
+        }
+    } else {
+        console.log("User name and/or password undefined or incorrect");
+    }
+
+    res.redirect('/redirect');
+});
+
+app.get('/redirect', function (req, res) {
+    if (req.session.authenticated) {
+        console.log('You are in!');
+        res.redirect('/admin');
+    } else {
+        res.send("<script>alert('Mauvais Utilisateur et/ou Mot de passe')</script>");
+        res.redirect('/auth');
+
+    }
+});
+
+app.get('/logout', function (req, res) {
+    req.session.destroy(function (err) {
+        // console.log(err);
+        res.redirect('/auth');
+        console.log("You've been logout");
+    });
+});
+
+// The following "requireLogin" middleware protects a particular
+// route(s), in our case /admin/*, from being accessed
+function requireLogin(req, res, next) {
+    if (req.session.authenticated) {
+        next(); // allow the next route to run
+    } else {
+        // require the user to log in
+        res.redirect("/auth"); // or render a form, etc.
+    }
+}
 
 //On finit avec un beau listen
 app.listen(port, function () {
