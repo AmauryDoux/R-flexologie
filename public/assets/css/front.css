@@ -237,3 +237,10 @@ textarea {
 #icons {
     color: white;
 }
+
+/*-----------footer----------------*/
+
+.footercontainer {
+    margin-top: 10%;
+    border-top: grey;
+}
