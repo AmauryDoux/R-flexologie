@@ -6,7 +6,6 @@ angular.module("reflexologie")
         controller : Menu
     })
 
-function Menu($scope, $http, $window) {
 
 function Menu($scope, $http, $window) {
     this.horaires= "horaires";
