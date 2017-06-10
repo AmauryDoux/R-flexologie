@@ -21,7 +21,6 @@ app
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
     .use(express.static('public'))
-    // .use('/admin', express.static('admin'))
     .use('/auth', express.static('auth'))
     .use(session({
         secret: 'TheAliensAreAmongUs', // secret word to create the hash
