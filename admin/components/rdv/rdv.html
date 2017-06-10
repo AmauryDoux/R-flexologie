@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col s6" ng-repeat="rdv in $ctrl.rdvs | orderBy:'jour' track by $index ">
         <div class="card" ng-class="{'teal lighten-3' : rdv.status == 0, 'green lighten-3' : rdv.status == 1, 'red lighten-3' : rdv.status == 2}">
-            <button ng-click="deleted()" data-id="{{rdv._id}}">delete</button>
+            <button ng-click="deleted()" data-id="{{rdv._id}}">Supprimer</button>
             <div class="card-content black-text">
-                <h4>{{rdv.patient.nom}}, {{rdv.patient.prenom}}</h4> <h5>Rendez-vous : {{rdv.jour}} {{rdv.heureStart}}-{{rdv.heureEnd}}</h5>
+                <h4>{{rdv.patient.nom}}, {{rdv.patient.prenom}}</h4> <h5>Rendez-vous : Le {{rdv.jour}} de {{rdv.heureStart}}h à {{rdv.heureEnd}}h</h5>
                 <p>{{rdv.patient.commentaire}}</p>
             </div>
             <div class="card-action">
@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{rdv.patient.tel}}</td>
                             <td>{{rdv.patient.email}}</td>
-                            <td> {{rdv.jour}} {{rdv.heureStart}} {{rdv.heureEnd}}</td>
+                            <td> {{rdv.jour}} de {{rdv.heureStart}}h à {{rdv.heureEnd}}h</td>
                         </tr>
                         </tr>
                     </tbody>
@@ -53,7 +53,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons"></i>Valider/supprimer</div>
+                        <div class="collapsible-header"><i class="material-icons"></i>Valider/Annuler</div>
                         <div class="collapsible-body">
                             <a class="waves-effect waves-light btn  val modal-action modal-close" ng-click="toast()" ng-disabled="rdv.status == 1"><i class="material-icons" >done</i></a>
                             <a class="waves-effect waves-light btn red nope modal-action modal-close" ng-click="nope()" ng-disabled="rdv.status == 2"><i class="material-icons">X</i></a></div>

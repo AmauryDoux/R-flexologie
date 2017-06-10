@@ -18,9 +18,9 @@ angular.module("reflexologie")
             if (distance < 100) {
                 scrollTo(0, stopY); return;
             }
-            var speed = Math.round(distance / 100);
+            var speed = Math.round(distance / 200);
             if (speed >= 20) speed = 20;
-            var step = Math.round(distance / 25);
+            var step = Math.round(distance / 50);
             var leapY = stopY > startY ? startY + step : startY - step;
             var timer = 0;
             if (stopY > startY) {
@@ -47,7 +47,7 @@ angular.module("reflexologie")
 
             function elmYPosition(eID) {
                 var elm = document.getElementById(eID);
-                var y = elm.offsetTop;
+                var y = elm.offsetTop - 100;
                 var node = elm;
                 while (node.offsetParent && node.offsetParent != document.body) {
                     node = node.offsetParent;
@@ -71,7 +71,7 @@ function MenuSticky($scope, $location, anchorSmoothScroll) {
     $scope.gotoElement = function (eID) {
         // set the location.hash to the id of
         // the element you wish to scroll to.
-        $location.hash('bottom');
+        $location.hash('');
 
         // call $anchorScroll()
         anchorSmoothScroll.scrollTo(eID);

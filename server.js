@@ -161,9 +161,9 @@ routed
     })
     .post(function (req, res) {
         var rdv = new RdvJour();
-        rdv.jour = req.body.jour;
-        rdv.heureStart = req.body.heureStart;
-        rdv.heureEnd = req.body.heureEnd;
+        rdv.title = req.body.title;
+        rdv.start = req.body.start;
+        rdv.end = req.body.end;
         rdv.save(function (err) {
             if (err) {
                 res.send(err);
@@ -187,9 +187,9 @@ routed
             if (err) {
                 res.send(err);
             }
-            rdv.jour = req.body.jour;
-            rdv.heureStart = req.body.heureStart;
-            rdv.heureEnd = req.body.heureEnd;
+            rdv.title = req.body.title;
+            rdv.start = req.body.start;
+            rdv.end = req.body.end;
 
             rdv.save(function (err) {
                 if (err) {
@@ -351,11 +351,11 @@ app.get('/logout', function(req, res) {
 // route(s), in our case /admin/*, from being accessed
 function requireLogin(req, res, next) {
     if (req.session.authenticated) {
-   		next(); // allow the next route to run
- 	} else {
-    	// require the user to log in
-    	res.redirect("/auth"); // or render a form, etc.
-	}
+        next(); // allow the next route to run
+    } else {
+        // require the user to log in
+        res.redirect("/auth"); // or render a form, etc.
+    }
 }
 
 //On finit avec un beau listen
