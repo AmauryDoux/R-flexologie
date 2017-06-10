@@ -332,7 +332,10 @@ app.get('/redirects', function(req, res) {
         res.redirect('/admin');
     } else {
         // res.end('Who are you?!');
-	res.send('<script> alert("Nom d\'utilisateur et/ou Mot de passe incorrect(s).") </script>');
+	    res.send('<script>\
+                    alert("Nom d\'utilisateur et/ou Mot de passe incorrect(s).");\
+                    window.location.replace("http://localhost:3000/auth");\
+                </script>');
     }
 });
 
